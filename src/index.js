@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import './assets/css/custom-events.css';
+import UIkit from 'uikit';
+
+import './assets/css/uikit.min.css';
+import './assets/css/main.css';
 // import mobX from './mobx/store.js';
 const mobx = ''
 import App from './App';
 
 ReactDOM.render((
-  <App store={mobx} size={'{s:9}'}/>
+  <App size={'{s:9}'}/>
 ), document.getElementById('root'));
 
 if (module.hot) {
