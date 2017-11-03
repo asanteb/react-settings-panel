@@ -1,0 +1,11 @@
+{
+    "presets": ["env", "react", "es2015", "es2017", "stage-0"],
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-object-rest-spread",
+        "syntax-async-functions",
+        "transform-regenerator",
+        "syntax-async-generators",
+        "transform-runtime"
+    ]
+}
