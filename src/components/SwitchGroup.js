@@ -5,7 +5,8 @@ const styles = {
 
 }
 
-class Settings extends Component {
+class SwitchGroup extends Component {
+	static displayName = "SWITCH_GROUP"
 	constructor() {
     super();
     this.state = {
@@ -30,4 +31,4 @@ class Settings extends Component {
     )
   }
 }
-export default Settings;
+export default SwitchGroup;
