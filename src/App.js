@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Layout from './components/Layout'
 import SwitchGroup from './components/SwitchGroup'
+import SwitchOption from './components/SwitchOption'
 import Toolbar from './components/Toolbar'
 
 import propTypes from 'prop-types'
@@ -38,7 +39,9 @@ class Settings extends Component {
 			<div style={styles}>
         <Layout>
           <Toolbar />
-          <SwitchGroup />
+          <SwitchGroup>
+            <SwitchOption title="Hey"/>
+          </SwitchGroup>
         </Layout>
 			</div>
     )

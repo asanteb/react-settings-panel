@@ -15,17 +15,9 @@ class SwitchGroup extends Component {
   }
   render() {
     return (
-			<div className='settings-panel'>
+			<div className='settings-group'>
 				<div uk-grid='uk-grid'>
-				<div>
-					<div className="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
-				<div>
-						<div className="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
-				<div>
-						<div className="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
+					{this.props.children}
 				</div>
 			</div>
     )
