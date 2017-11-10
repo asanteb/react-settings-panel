@@ -25,6 +25,8 @@ class SwitchOption extends Component {
 	}
 
   handleChange = (checked) => {
+		const onChange = this.props.onChange
+		onChange(checked)
     this.setState({ checked })
   }
 
@@ -41,4 +43,9 @@ class SwitchOption extends Component {
     )
   }
 }
+
+SwitchOption.propTypes = {
+	onChange: propTypes.func
+}
+
 export default SwitchOption

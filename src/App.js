@@ -32,6 +32,10 @@ class Settings extends Component {
     this.setState({styles: styles})
   }
 
+  handleChange = (checked) => {
+    // console.log(checked)
+  }
+
   render() {
     
     const styles = this.state.styles
@@ -40,7 +44,8 @@ class Settings extends Component {
         <Layout>
           <Toolbar />
           <SwitchGroup>
-            <SwitchOption title="Hey"/>
+            <SwitchOption title="Switch One" onChange={this.handleChange}/>
+            <SwitchOption title="Switch Two" onChange={this.handleChange}/>
           </SwitchGroup>
         </Layout>
 			</div>
