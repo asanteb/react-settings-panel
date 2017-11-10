@@ -12,7 +12,7 @@ import App from './App';
 UIkit.use(Icons)
 
 ReactDOM.render((
-  <App color={'orange'} textColor={'black'}/>
+  <App color={'#728ad8'} textColor={'black'}/>
 ), document.getElementById('root'));
 
 if (module.hot) {

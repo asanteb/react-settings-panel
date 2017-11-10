@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Layout from './components/Layout'
 import SwitchGroup from './components/SwitchGroup'
 import SwitchOption from './components/SwitchOption'
+import InputSetting from './components/InputSetting'
 import Toolbar from './components/Toolbar'
 
 import propTypes from 'prop-types'
@@ -32,8 +33,8 @@ class Settings extends Component {
     this.setState({styles: styles})
   }
 
-  handleChange = (checked) => {
-    // console.log(checked)
+  handleChange = (change) => {
+    console.log(change)
   }
 
   render() {
@@ -47,10 +48,10 @@ class Settings extends Component {
             <SwitchOption title="Switch One" onChange={this.handleChange}/>
             <SwitchOption title="Switch Two" onChange={this.handleChange}/>
             <SwitchOption title="Switch Three" onChange={this.handleChange}/>
+            <InputSetting title="Input One" onChange={this.handleChange}/>
           </SwitchGroup>
           <SwitchGroup>
             <SwitchOption title="Switch One" onChange={this.handleChange}/>
-            <SwitchOption title="Switch Two" onChange={this.handleChange}/>
             <SwitchOption title="Switch Three" onChange={this.handleChange}/>
           </SwitchGroup>
           <SwitchGroup>

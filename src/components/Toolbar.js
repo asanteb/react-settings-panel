@@ -26,6 +26,11 @@ class Toolbar extends Component {
 							/>
 						</a>
 					</div>
+					<div className="uk-navbar-center" style={{color: '#888888'}}>
+						<ul className="uk-navbar-nav">
+								<li className='uk-text-large uk-text-bold'>Settings</li>
+						</ul>
+					</div>
 				</nav>
 			</div>
     )
