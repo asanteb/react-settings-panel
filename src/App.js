@@ -1,32 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Layout from './components/Layout'
+import SwitchGroup from './components/SwitchGroup'
 import propTypes from 'prop-types'
 
-const styles = {
-
+const defaultStyles = {
+  backgroundColor: 'red',
+  color: 'white'
 }
 
 class Settings extends Component {
 	constructor() {
     super();
     this.state = {
-      styles: styles
+      styles: defaultStyles
     }
   }
+
+  componentDidMount() {
+    this.loadStyles()
+  }
+
+  loadStyles = () => {
+    const styles = { ...this.state.styles }
+    const userStyles = this.props
+
+    if (userStyles.color) styles.backgroundColor = userStyles.color
+    if (userStyles.textColor) styles.textColor = userStyles.color
+    this.setState({styles: styles})
+  }
+
   render() {
-    console.log(this.props.size)
+    
+    const styles = this.state.styles
     return (
-			<div className='settings-panel'>
-				<div uk-grid='uk-grid'>
-				<div>
-        	<div className="uk-card uk-card-default uk-card-body">Item</div>
-    		</div>
-				<div>
-						<div className="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
-				<div>
-						<div className="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
-				</div>
+			<div style={styles}>
+        <Layout>
+          <SwitchGroup />
+        </Layout>
 			</div>
     )
   }
@@ -34,12 +44,13 @@ class Settings extends Component {
 
 Settings.propTypes = {
     // size: propTypes.string.required,
-    size: function(props, propName, componentName) {
-        if (!/matchme/.test(props[propName])) {
+    // !/red/.test(props[propName])
+    color: function(props, propName, componentName) {
+        if (!(typeof props[propName] === 'string')) {
           return new Error(
-            'Invalid prop `' + propName + '` supplied to' +
-            ' `' + componentName + '`. Validation failed.'
-          );
+            `Invalid prop ${propName} of type '${typeof props[propName]}' `+ 
+            `supplied to ${componentName}\n Expected a 'String'`
+          )
         }
       },
 }

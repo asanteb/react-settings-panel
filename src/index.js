@@ -10,7 +10,7 @@ const mobx = ''
 import App from './App';
 
 ReactDOM.render((
-  <App size={'{s:9}'}/>
+  <App color={'orange'} textColor={'black'}/>
 ), document.getElementById('root'));
 
 if (module.hot) {
