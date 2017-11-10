@@ -46,7 +46,19 @@ class Settings extends Component {
           <SwitchGroup>
             <SwitchOption title="Switch One" onChange={this.handleChange}/>
             <SwitchOption title="Switch Two" onChange={this.handleChange}/>
+            <SwitchOption title="Switch Three" onChange={this.handleChange}/>
           </SwitchGroup>
+          <SwitchGroup>
+            <SwitchOption title="Switch One" onChange={this.handleChange}/>
+            <SwitchOption title="Switch Two" onChange={this.handleChange}/>
+            <SwitchOption title="Switch Three" onChange={this.handleChange}/>
+          </SwitchGroup>
+          <SwitchGroup>
+          <SwitchOption title="Switch One" onChange={this.handleChange}/>
+          <SwitchOption title="Switch Two" onChange={this.handleChange}/>
+          <SwitchOption title="Switch Three" onChange={this.handleChange}/>
+          <SwitchOption title="Switch 4" onChange={this.handleChange}/>
+        </SwitchGroup>
         </Layout>
 			</div>
     )

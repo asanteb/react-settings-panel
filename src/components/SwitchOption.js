@@ -32,14 +32,17 @@ class SwitchOption extends Component {
 
   render() {
     return (
-      <div>
-        <h4>{this.state.header}</h4>
+      <dl className="uk-description-list uk-description-list-divider">
+        <dt>{this.state.header}</dt>
         <Switch
           onChange={this.handleChange}
           checked={this.state.checked}
           id="example-switch"
-        />
-      </div>
+				/>
+				<dd>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</dd>
+      </dl>
     )
   }
 }

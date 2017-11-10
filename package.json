@@ -30,11 +30,13 @@
   "homepage": "https://github.com/asantebuil/react-settings-panel#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "md5": "^2.2.1",
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-flexbox-grid": "^2.0.0",
     "react-fontawesome": "^1.6.1",
     "react-switch": "^2.0.1",
     "stats-webpack-plugin": "^0.6.1",
