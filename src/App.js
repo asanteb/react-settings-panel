@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Layout from './components/Layout'
 import SwitchGroup from './components/SwitchGroup'
+import Toolbar from './components/Toolbar'
+
 import propTypes from 'prop-types'
 
 const defaultStyles = {
@@ -35,6 +37,7 @@ class Settings extends Component {
     return (
 			<div style={styles}>
         <Layout>
+          <Toolbar />
           <SwitchGroup />
         </Layout>
 			</div>

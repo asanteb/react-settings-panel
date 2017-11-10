@@ -14,30 +14,27 @@ class Settings extends Component {
     }
   }
   render() {
-		
-		// if (this.props.children.forEach){
-		// 	this.props.children.forEach(child => {
-		// 		console.log(child.)
-		// 	})
-		// }
-		console.log(this.props.children.type.displayName)
+		let Toolbar = () => null
+		let SwitchGroup = () => null
+		let SingleUnknownProp = () => null
+
+		if (this.props.children.forEach){
+			this.props.children.forEach(child => {
+				if (child.type.displayName === 'TOOLBAR') {
+					Toolbar = () => child
+				}
+				if (child.type.displayName === 'SWITCH_GROUP') {
+					SwitchGroup = () => child
+				}
+			})
+		} else {
+			SingleUnknownProp = this.props.children
+		}
     return (
 			<div className='settings-layout'>
-				<nav className="uk-navbar uk-navbar-container uk-margin">
-					<div className="uk-navbar-left">
-						<a className="uk-navbar-toggle" href="#">
-								<FontAwesome
-								className='super-crazy-colors'
-								name='rocket'
-								size='2x'
-								spin
-								style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-							/>
-						</a>
-					</div>
-				</nav>
-				LoLOLolOl
-				{this.props.children}
+				<Toolbar />
+				<SwitchGroup />
+				<SingleUnknownProp />
 			</div>
     )
   }
