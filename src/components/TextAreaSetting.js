@@ -6,19 +6,17 @@ const styles = {
 
 }
 
-class InputSetting extends Component {
-	static displayName = "INPUT_SETTING"
+class TextArea extends Component {
+	static displayName = "TEXT_AREA_SETTING"
 	constructor() {
     super()
     this.state = {
-			checked: false,
-			header: '',
 			value:''
 		}
 	}
 	
 	componentDidMount () {
-		// this.initProps()
+
 	}
 
 
@@ -35,12 +33,12 @@ class InputSetting extends Component {
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
-					<input
+					<textarea
 						type='text'
-						className='uk-input'
+						className='uk-textarea'
 						value={this.state.value}
 						onChange={this.handleChange}
-						id="settings-input"
+						id="settings-textArea"
 					/>
 					<dd>
 						{description}
@@ -52,11 +50,11 @@ class InputSetting extends Component {
   }
 }
 
-InputSetting.propTypes = {
+TextArea.propTypes = {
     onValue: propTypes.func,
 		onSubmit: propTypes.func,
 		title: propTypes.string,
 		description: propTypes.string
 }
 
-export default InputSetting
+export default TextArea

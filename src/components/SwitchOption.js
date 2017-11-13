@@ -17,12 +17,9 @@ class SwitchOption extends Component {
 	}
 	
 	componentDidMount () {
-		this.initProps()
+	
 	}
 
-	initProps = () => {
-		if (this.props.title) this.setState({header: this.props.title})
-	}
 
   handleChange = (checked) => {
 		const onChange = this.props.onChange
@@ -31,24 +28,33 @@ class SwitchOption extends Component {
   }
 
   render() {
+
+		const title = this.props.title ? this.props.title : null
+		const description = this.props.description ? this.props.description : null
+
     return (
-      <dl className="uk-description-list uk-description-list-divider">
-        <dt>{this.state.header}</dt>
-        <Switch
-          onChange={this.handleChange}
-          checked={this.state.checked}
-          id="example-switch"
-				/>
-				<dd>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				</dd>
-      </dl>
+			<div>
+				<dl className="uk-description-list uk-description-list-divider">
+					<dt>{title}</dt>
+					<Switch
+						onChange={this.handleChange}
+						checked={this.state.checked}
+						id="switch-option"
+					/>
+					<dd>
+						{description}
+					</dd>
+				</dl>
+				<hr/>
+			</div>
     )
   }
 }
 
 SwitchOption.propTypes = {
-	onChange: propTypes.func
+	onChange: propTypes.func,
+	title: propTypes.string,
+	description: propTypes.string
 }
 
 export default SwitchOption
