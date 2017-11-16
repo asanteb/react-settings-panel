@@ -1,110 +1,82 @@
 import React, { Component } from 'react'
-import Layout from './components/Layout'
-import SwitchGroup from './components/SwitchGroup'
-import SwitchOption from './components/SwitchOption'
-import InputSetting from './components/InputSetting'
-import TextAreaSetting from './components/TextAreaSetting'
-import Checkbox from './components/Checkbox'
-import CheckboxGroup from './components/CheckboxGroup'
-import Radio from './components/Radio'
-import RadioGroup from './components/RadioGroup'
-import Selection from './components/Selection'
-import SelectionSetting from './components/SelectionSetting'
-
-
-import Toolbar from './components/Toolbar'
-
+import {
+  Toolbar,
+  Group,
+  SettingsPanel,
+  Switch,
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup,
+  Option,
+  Selection,
+  Input,
+  TextArea
+} from '../index.js'
 import propTypes from 'prop-types'
-
-const defaultStyles = {
-  backgroundColor: 'red',
-  color: 'white'
-}
 
 class Settings extends Component {
 	constructor() {
     super();
-    this.state = {
-      styles: defaultStyles
-    }
+    this.state = {}
   }
 
-  componentDidMount() {
-    this.loadStyles()
-  }
-
-  loadStyles = () => {
-    const styles = { ...this.state.styles }
-    const userStyles = this.props
-
-    if (userStyles.color) styles.backgroundColor = userStyles.color
-    if (userStyles.textColor) styles.textColor = userStyles.color
-    this.setState({styles: styles})
-  }
+  componentDidMount() {}
 
   handleChange = (change) => {
-    console.log(change)
+    //console.log(change)
+  }
+
+  handleSubmit = (data) => {
+    console.log(data)
   }
 
   render() {
     
     const styles = this.state.styles
     return (
-			<div style={styles}>
-        <Layout>
-          <Toolbar />
-          <SwitchGroup>
-            <SwitchOption title="Switch One" onChange={this.handleChange}/>
-            <SwitchOption title="Switch Two" onChange={this.handleChange}/>
-            <SwitchOption title="Switch Three" onChange={this.handleChange}/>
-            <InputSetting title="Input One" onChange={this.handleChange}/>
-            <SelectionSetting title="Selection" onChange={this.handleChange}>
-              <Selection name='A' onChange={this.handleChange}/>
-              <Selection name='B' onChange={this.handleChange}/>
-              <Selection name='C' onChange={this.handleChange}/>
-            </SelectionSetting>
-          </SwitchGroup>
-          <SwitchGroup>
-            <SwitchOption title="Switch One" onChange={this.handleChange}/>
-            <SwitchOption title="Switch Three" onChange={this.handleChange}/>
-            <TextAreaSetting title="TextArea" onChange={this.handleChange}/>
-            <RadioGroup title="Radio" onChange={this.handleChange}>
-              <Radio name='A' onChange={this.handleChange}/>
-              <Radio name='B' onChange={this.handleChange}/>
-              <Radio name='C' onChange={this.handleChange}/>
+			<div >
+        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
+          <Toolbar store={'sup'}/>
+          <Group>
+            <Switch title="Switch One" name={'a'} onChange={this.handleChange}/>
+            <Switch title="Switch Two" name={'b'} onChange={this.handleChange}/>
+            <Switch title="Switch Three" name={'c'} onChange={this.handleChange}/>
+            <Input title="Input One" name={'d'} onChange={this.handleChange}/>
+            <Selection title="Selection " name={'e'} onChange={this.handleChange}>
+              <Option value='a' onChange={this.handleChange}/>
+              <Option value='b' onChange={this.handleChange}/>
+              <Option value='c' onChange={this.handleChange}/>
+            </Selection>
+          </Group>
+          <Group>
+            <Switch title="Switch One" name='1' onChange={this.handleChange}/>
+            <Switch title="Switch Three" name='2' onChange={this.handleChange}/>
+            <TextArea title="TextArea" name='3' onChange={this.handleChange}/>
+            <RadioGroup title="Radio" name='radioo' onChange={this.handleChange}>
+              <Radio value='A' onChange={this.handleChange}/>
+              <Radio value='B' onChange={this.handleChange}/>
+              <Radio value='C' onChange={this.handleChange}/>
             </RadioGroup>
-          </SwitchGroup>
-          <SwitchGroup>
-          <SwitchOption title="Switch One" onChange={this.handleChange}/>
-          <SwitchOption title="Switch Two" onChange={this.handleChange}/>
-          <SwitchOption title="Switch Three" onChange={this.handleChange}/>
-          <SwitchOption title="Switch 4" onChange={this.handleChange}/>
-          <CheckboxGroup title="Switch 4" onChange={this.handleChange}>
-            <Checkbox name='A' onChange={this.handleChange}/>
-            <Checkbox name='B' onChange={this.handleChange}/>
-            <Checkbox name='C' onChange={this.handleChange}/>
-            <Checkbox name='D' onChange={this.handleChange}/>
-            <Checkbox name='E' onChange={this.handleChange}/>
-            <Checkbox name='F' onChange={this.handleChange}/>
+          </Group>
+          <Group>
+          <Switch name='aaa1' title="Switch One" onChange={this.handleChange}/>
+          <Switch name='aaa2' title="Switch Two" onChange={this.handleChange}/>
+          <Switch name='aaa3' title="Switch Three" onChange={this.handleChange}/>
+          <Switch name='aaa4' title="Switch 4" onChange={this.handleChange}/>
+          <CheckboxGroup name='Checkbox ahoy' title="Switch 4" onChange={this.handleChange}>
+            <Checkbox value='A' onChange={this.handleChange}/>
+            <Checkbox value='B' onChange={this.handleChange}/>
+            <Checkbox value='C' onChange={this.handleChange}/>
+            <Checkbox value='D' onChange={this.handleChange}/>
+            <Checkbox value='E' onChange={this.handleChange}/>
+            <Checkbox value='F' onChange={this.handleChange}/>
           </CheckboxGroup>
-        </SwitchGroup>
-        </Layout>
+        </Group>
+        </SettingsPanel>
 			</div>
     )
   }
-}
-
-Settings.propTypes = {
-    // size: propTypes.string.required,
-    // !/red/.test(props[propName])
-    color: function(props, propName, componentName) {
-        if (!(typeof props[propName] === 'string')) {
-          return new Error(
-            `Invalid prop ${propName} of type '${typeof props[propName]}' `+ 
-            `supplied to ${componentName}\n Expected a 'String'`
-          )
-        }
-      },
 }
 
 export default Settings;

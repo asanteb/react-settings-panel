@@ -1,29 +1,32 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
+import { observer } from 'mobx-react'
 
 const styles = {
 
 }
 
+@observer
 class InputSetting extends Component {
 	static displayName = "INPUT_SETTING"
 	constructor() {
-    super()
-    this.state = {
+	super()
+	this.state = {
 			checked: false,
 			header: '',
 			value:''
 		}
 	}
-	
+
 	componentDidMount () {
 		// this.initProps()
 	}
 
 
   handleChange = (e) => {
-		this.props.onChange(e.target.value)
+		this.props.onChange(this.props.store.settingsData)
+		this.props.store.settingsData[this.props.name] = e.target.value
 		this.setState({value: e.target.value})
   }
 
@@ -31,7 +34,7 @@ class InputSetting extends Component {
 		const title = this.props.title ? this.props.title : null
 		const description = this.props.description ? this.props.description : null
 
-    return (
+	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
@@ -48,15 +51,16 @@ class InputSetting extends Component {
 					<hr/>
 				</dl>
 			</div>
-    )
+	)
   }
 }
 
 InputSetting.propTypes = {
-    onValue: propTypes.func,
+	onValue: propTypes.func,
 		onSubmit: propTypes.func,
 		title: propTypes.string,
-		description: propTypes.string
+		description: propTypes.string,
+		name: propTypes.string.isRequired
 }
 
 export default InputSetting

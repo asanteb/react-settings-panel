@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
+import md5 from 'md5'
+import { observer } from 'mobx-react'
+
 
 const styles = {
 
 }
-
+@observer
 class CheckboxSetting extends Component {
 	static displayName = "CHECKBOX_SETTING"
 	constructor() {
@@ -30,10 +33,19 @@ class CheckboxSetting extends Component {
 		const description = this.props.description ? this.props.description : null
 		const Checkboxes = []
 
+		if (!this.props.store.settingsData[this.props.name]){
+			this.props.store.settingsData[this.props.name] = {}
+		}
+
 		if (this.props.children.forEach) {
-			this.props.children.forEach(child => {
+			this.props.children.forEach((child, i) => {
 				if (child.type.displayName === 'CHECKBOX') {
-					Checkboxes.push(child)
+					const c = React.cloneElement(child, {
+						store: this.props.store,
+						key: md5(`boxes${i}`),
+						parentName: this.props.name
+					})
+					Checkboxes.push(c)
 				}
 			})
 		}
@@ -43,9 +55,7 @@ class CheckboxSetting extends Component {
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
 						<div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-							{
-								Checkboxes.map(box => box)
-							}
+							{Checkboxes.map(box => box)}
 						</div>
 					<dd>
 						{description}
@@ -61,7 +71,8 @@ CheckboxSetting.propTypes = {
     onValue: propTypes.func,
 		onSubmit: propTypes.func,
 		title: propTypes.string,
-		description: propTypes.string
+		description: propTypes.string,
+		name: propTypes.string.isRequired
 }
 
 export default CheckboxSetting

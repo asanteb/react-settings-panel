@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
+import { observer } from 'mobx-react'
 
 const styles = {
 
 }
 
+@observer
 class SwitchOption extends Component {
 	static displayName = "SWITCH_OPTION"
 	constructor() {
-    super()
-    this.state = {
+	super()
+	this.state = {
 			checked: false,
 			header: ''
 		}
@@ -23,8 +25,9 @@ class SwitchOption extends Component {
 
   handleChange = (checked) => {
 		const onChange = this.props.onChange
-		onChange(checked)
-    this.setState({ checked })
+		this.props.store.settingsData[this.props.name] = checked
+		onChange(this.props.store.settingsData)
+		this.setState({ checked })
   }
 
   render() {
@@ -32,7 +35,7 @@ class SwitchOption extends Component {
 		const title = this.props.title ? this.props.title : null
 		const description = this.props.description ? this.props.description : null
 
-    return (
+	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{title}</dt>
@@ -47,14 +50,15 @@ class SwitchOption extends Component {
 				</dl>
 				<hr/>
 			</div>
-    )
+	)
   }
 }
 
 SwitchOption.propTypes = {
 	onChange: propTypes.func,
 	title: propTypes.string,
-	description: propTypes.string
+	description: propTypes.string,
+	name: propTypes.string.isRequired
 }
 
 export default SwitchOption
