@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node webpack.server.js"
+    "start": "node webpack.server.js",
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "react-dom": "^16.1.1",
     "react-flexbox-grid": "^2.0.0",
     "react-fontawesome": "^1.6.1",
+    "react-settings-panel": "^1.0.1",
     "react-switch": "^2.0.1",
     "stats-webpack-plugin": "^0.6.1",
     "uikit": "^3.0.0-beta.35",

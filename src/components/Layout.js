@@ -11,10 +11,9 @@ import {
 } from 'react-flexbox-grid'
 
 import UIkit from 'uikit';
-import Icons from '../assets/js/uikit-icons.min.js';
 import '../assets/css/uikit.min.css';
 import '../assets/css/main.css';
-UIkit.use(Icons)
+// UIkit.use(Icons)
 
 const defaultStyles = {
   backgroundColor: '#728ad8',
