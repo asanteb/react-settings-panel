@@ -12,7 +12,7 @@ import {
   Selection,
   Input,
   TextArea
-} from '../index.js'
+} from '../dist/index.js'
 import propTypes from 'prop-types'
 
 class Settings extends Component {
