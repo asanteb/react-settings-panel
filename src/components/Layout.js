@@ -35,7 +35,7 @@ class Settings extends Component {
     const styles = { ...this.state.styles }
     const userStyles = this.props
     if (userStyles.color) styles.backgroundColor = userStyles.color
-    if (userStyles.textColor) styles.textColor = userStyles.color
+    if (userStyles.textColor) styles.textColor = userStyles.textColor
     this.setState({styles: styles})
   }
 
