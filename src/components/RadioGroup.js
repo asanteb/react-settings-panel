@@ -12,15 +12,15 @@ const styles = {
 class RadioGroup extends Component {
 	static displayName = "RADIO_SETTING"
 	constructor() {
-    super()
-    this.state = {
+		super()
+		this.state = {
 			value:''
 		}
 	}
 	
 	componentDidMount () {}
 
-  render() {
+	render() {
 		const title = this.props.title ? this.props.title : null
 		const description = this.props.description ? this.props.description : null
 		const Radios = []
@@ -42,7 +42,7 @@ class RadioGroup extends Component {
 			})
 		}
 
-    return (
+		return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
@@ -58,12 +58,12 @@ class RadioGroup extends Component {
 					<hr/>
 				</dl>
 			</div>
-    )
-  }
+		)
+	}
 }
 
 RadioGroup.propTypes = {
-    onValue: propTypes.func,
+		onValue: propTypes.func,
 		onSubmit: propTypes.func,
 		title: propTypes.string,
 		description: propTypes.string,

@@ -23,14 +23,14 @@ class SwitchOption extends Component {
 	}
 
 
-  handleChange = (checked) => {
+	handleChange = (checked) => {
 		const onChange = this.props.onChange
 		this.props.store.settingsData[this.props.name] = checked
-		onChange(this.props.store.settingsData)
+		if (this.props.onChange) onChange(this.props.store.settingsData)
 		this.setState({ checked })
-  }
+	}
 
-  render() {
+	render() {
 
 		const title = this.props.title ? this.props.title : null
 		const description = this.props.description ? this.props.description : null
@@ -51,7 +51,7 @@ class SwitchOption extends Component {
 				<hr/>
 			</div>
 	)
-  }
+	}
 }
 
 SwitchOption.propTypes = {

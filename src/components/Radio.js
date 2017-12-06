@@ -11,8 +11,8 @@ const styles = {
 class Radio extends Component {
 	static displayName = "RADIO"
 	constructor() {
-    super()
-    this.state = {
+		super()
+		this.state = {
 			value:''
 		}
 	}
@@ -25,16 +25,15 @@ class Radio extends Component {
 		return this.props.store[this.props.parentName][this.props.value]
 	}
 
-  handleChange = (e, value) => {
+	handleChange = (e, value) => {
 		this.props.store.settingsData[this.props.parentName] = value
-		console.log(value, 'Changed')
-		this.props.onChange(this.props.store.settingsData)
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
 		this.setState({value: e.target.value})
-  }
+	}
 
-  render() {
+	render() {
 		const value = this.props.value ? this.props.value : ''
-    return (
+		return (
 			<label>
 				<input
 					name={this.props.parentName}
@@ -47,12 +46,12 @@ class Radio extends Component {
 				/>
 				<span style={{padding: '0.5em'}}>{value}</span>
 			</label>
-    )
-  }
+		)
+	}
 }
 
 Radio.propTypes = {
-    value: propTypes.string,
+		value: propTypes.string,
 		onChange: propTypes.func,
 }
 

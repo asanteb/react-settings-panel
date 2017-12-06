@@ -24,8 +24,7 @@ class Selection extends Component {
 
   handleChange = (e, value) => {
 		this.props.store.settingsData[this.props.parentName] = e.target.value
-		this.props.onChange(this.props.store.settingData)
-		console.log('sup sup')
+		if (this.props.onChange) this.props.onChange(this.props.store.settingData)
 		this.setState({value: e.target.value})
   }
 

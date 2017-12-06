@@ -12,8 +12,8 @@ const styles = {
 class CheckboxSetting extends Component {
 	static displayName = "CHECKBOX_SETTING"
 	constructor() {
-    super()
-    this.state = {
+		super()
+		this.state = {
 			value:''
 		}
 	}
@@ -23,12 +23,12 @@ class CheckboxSetting extends Component {
 	}
 
 
-  handleChange = (e) => {
-		this.props.onChange(e.target.value)
+	handleChange = (e) => {
+	if (this.props.onChange) this.props.onChange(e.target.value)
 		this.setState({value: e.target.value})
-  }
+	}
 
-  render() {
+	render() {
 		const title = this.props.title ? this.props.title : null
 		const description = this.props.description ? this.props.description : null
 		const Checkboxes = []
@@ -50,7 +50,7 @@ class CheckboxSetting extends Component {
 			})
 		}
 
-    return (
+		return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
@@ -63,12 +63,12 @@ class CheckboxSetting extends Component {
 					<hr/>
 				</dl>
 			</div>
-    )
-  }
+		)
+	}
 }
 
 CheckboxSetting.propTypes = {
-    onValue: propTypes.func,
+		onValue: propTypes.func,
 		onSubmit: propTypes.func,
 		title: propTypes.string,
 		description: propTypes.string,

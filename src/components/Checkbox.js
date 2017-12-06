@@ -12,12 +12,12 @@ const styles = {
 class Checkbox extends Component {
 	static displayName = "CHECKBOX"
 	constructor() {
-    super()
-    this.state = {
+	super()
+	this.state = {
 			value: false
 		}
 	}
-	
+
 	componentDidMount () {
 
 	}
@@ -25,14 +25,14 @@ class Checkbox extends Component {
 
   handleChange = (e, value) => {
 		this.props.store.settingsData[this.props.parentName][value] = !this.state.value
-		this.props.onChange(this.props.store.settingsData)
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
 		this.setState({value: !this.state.value})
   }
 
   render() {
 		const value = this.props.value ? this.props.value : ''
 
-    return (
+	return (
 			<label>
 				<input
 					type='checkbox'
@@ -42,13 +42,13 @@ class Checkbox extends Component {
 				/>
 				<span style={{padding: '0.5em'}}>{value}</span>
 			</label>
-    )
+	)
   }
 }
 
 Checkbox.propTypes = {
-    value: propTypes.string,
-		onChange: propTypes.func,
+	value: propTypes.string,
+	onChange: propTypes.func,
 }
 
 export default Checkbox

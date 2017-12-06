@@ -11,8 +11,8 @@ const styles = {
 class SelectionSetting extends Component {
 	static displayName = "SELECTION_SETTING"
 	constructor() {
-    super()
-    this.state = {
+	super()
+	this.state = {
 			value: '',
 			loaded: false
 		}
@@ -26,7 +26,7 @@ class SelectionSetting extends Component {
   handleChange = (e, def) => {
 		// if (this.state.value && loaded)
 		this.props.store.settingsData[this.props.name] = e.target.value
-		this.props.onChange(this.props.store.settingsData)
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
 		this.setState({value: e.target.value})
   }
 
@@ -51,7 +51,7 @@ class SelectionSetting extends Component {
 			})
 		}
 
-    return (
+	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
@@ -69,12 +69,12 @@ class SelectionSetting extends Component {
 					<hr/>
 				</dl>
 			</div>
-    )
+	)
   }
 }
 
 SelectionSetting.propTypes = {
-    onValue: propTypes.func,
+	onValue: propTypes.func,
 		onChange: propTypes.func,
 		title: propTypes.string,
 		description: propTypes.string,
