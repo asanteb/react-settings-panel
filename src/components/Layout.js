@@ -53,7 +53,7 @@ class Settings extends Component {
 		let Groups = []
 		let SingleUnknownProp = null
 		let Submit = (
-			<p uk-margin='' style={{textAlign: 'right', padding: '1.5em'}}>
+			<p className='uk-margin' style={{textAlign: 'right', padding: '1.5em'}}>
 				<button onClick={this.clearData} style={{backgroundColor: 'white'}} className="uk-button uk-button-default">Cancel</button>
 				<button onClick={this.submitData} className="uk-button uk-button-primary">Submit</button>
 			</p>
