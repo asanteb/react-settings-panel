@@ -86,15 +86,18 @@ var Settings = function (_Component) {
 		};
 
 		_this.submitData = function () {
-			_this.props.onSubmit((0, _extends3.default)({}, _store2.default.settingsData));
+			_this.props.onSubmit((0, _extends3.default)({}, _this.state.mobX.settingsData));
 		};
 
 		_this.clearData = function () {
-			_store2.default.settingsData = {};
+			var store = _this.state.mobX;
+			store.settingsData = {};
+			_this.setState({ mobX: store });
 		};
 
 		_this.state = {
-			styles: defaultStyles
+			styles: defaultStyles,
+			mobX: _store2.default
 		};
 		return _this;
 	}
@@ -107,12 +110,14 @@ var Settings = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			var Toolbar = null;
 			var Groups = [];
 			var SingleUnknownProp = null;
 			var Submit = _react2.default.createElement(
 				'p',
-				{ 'uk-margin': '', style: { textAlign: 'right', padding: '1.5em' } },
+				{ className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
 				_react2.default.createElement(
 					'button',
 					{ onClick: this.clearData, style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
@@ -129,12 +134,12 @@ var Settings = function (_Component) {
 				this.props.children.forEach(function (child) {
 					if (child.type.displayName === 'TOOLBAR') {
 						Toolbar = _react2.default.cloneElement(child, {
-							store: _store2.default
+							store: _this2.state.mobX
 						});
 					}
 					if (child.type.displayName === 'GROUP') {
 						var g = _react2.default.cloneElement(child, {
-							store: _store2.default
+							store: _this2.state.mobX
 						});
 
 						Groups.push(g);
@@ -143,12 +148,12 @@ var Settings = function (_Component) {
 			} else {
 				var child = this.props.children;
 				SingleUnknownProp = _react2.default.cloneElement(child, {
-					store: _store2.default
+					store: this.state.mobX
 				});
 			}
 			return _react2.default.createElement(
 				_mobxReact.Provider,
-				{ store: _store2.default },
+				{ store: this.state.mobX },
 				_react2.default.createElement(
 					'div',
 					{ className: 'settings-layout', style: this.state.styles },

@@ -55,7 +55,7 @@ var SwitchOption = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
 		_this.handleChange = function (checked) {
 			var onChange = _this.props.onChange;
 			_this.props.store.settingsData[_this.props.name] = checked;
-			onChange(_this.props.store.settingsData);
+			if (_this.props.onChange) onChange(_this.props.store.settingsData);
 			_this.setState({ checked: checked });
 		};
 

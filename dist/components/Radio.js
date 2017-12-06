@@ -58,8 +58,7 @@ var Radio = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Comp
 
 		_this.handleChange = function (e, value) {
 			_this.props.store.settingsData[_this.props.parentName] = value;
-			console.log(value, 'Changed');
-			_this.props.onChange(_this.props.store.settingsData);
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
 		};
 

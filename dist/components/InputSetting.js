@@ -53,7 +53,7 @@ var InputSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
 		var _this = (0, _possibleConstructorReturn3.default)(this, (InputSetting.__proto__ || (0, _getPrototypeOf2.default)(InputSetting)).call(this));
 
 		_this.handleChange = function (e) {
-			_this.props.onChange(_this.props.store.settingsData);
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
 			_this.setState({ value: e.target.value });
 		};

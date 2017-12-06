@@ -54,7 +54,7 @@ var Checkbox = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
 
 		_this.handleChange = function (e, value) {
 			_this.props.store.settingsData[_this.props.parentName][value] = !_this.state.value;
-			_this.props.onChange(_this.props.store.settingsData);
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: !_this.state.value });
 		};
 

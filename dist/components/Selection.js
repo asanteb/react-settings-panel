@@ -54,8 +54,7 @@ var Selection = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_
 
 		_this.handleChange = function (e, value) {
 			_this.props.store.settingsData[_this.props.parentName] = e.target.value;
-			_this.props.onChange(_this.props.store.settingData);
-			console.log('sup sup');
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingData);
 			_this.setState({ value: e.target.value });
 		};
 

@@ -59,7 +59,7 @@ var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = func
 		_this.handleChange = function (e, def) {
 			// if (this.state.value && loaded)
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
-			_this.props.onChange(_this.props.store.settingsData);
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
 		};
 

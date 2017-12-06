@@ -28,7 +28,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _index = require('../index.js');
+var _index = require('./index.js');
 
 var _propTypes = require('prop-types');
 
@@ -74,48 +74,48 @@ var Settings = function (_Component) {
           _react2.default.createElement(
             _index.Group,
             null,
-            _react2.default.createElement(_index.Switch, { title: 'Switch One', name: 'a', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { title: 'Switch Two', name: 'b', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: 'c', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd', onChange: this.handleChange }),
+            _react2.default.createElement(_index.Switch, { title: 'Switch One', name: 'a' }),
+            _react2.default.createElement(_index.Switch, { title: 'Switch Two', name: 'b' }),
+            _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: 'c' }),
+            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd' }),
             _react2.default.createElement(
               _index.Selection,
-              { title: 'Selection ', name: 'e', onChange: this.handleChange },
-              _react2.default.createElement(_index.Option, { value: 'a', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Option, { value: 'b', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Option, { value: 'c', onChange: this.handleChange })
+              { title: 'Selection ', name: 'e' },
+              _react2.default.createElement(_index.Option, { value: 'a' }),
+              _react2.default.createElement(_index.Option, { value: 'b' }),
+              _react2.default.createElement(_index.Option, { value: 'c' })
             )
           ),
           _react2.default.createElement(
             _index.Group,
             null,
-            _react2.default.createElement(_index.Switch, { title: 'Switch One', name: '1', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: '2', onChange: this.handleChange }),
-            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3', onChange: this.handleChange }),
+            _react2.default.createElement(_index.Switch, { title: 'Switch One', name: '1' }),
+            _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: '2' }),
+            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3' }),
             _react2.default.createElement(
               _index.RadioGroup,
-              { title: 'Radio', name: 'radioo', onChange: this.handleChange },
-              _react2.default.createElement(_index.Radio, { value: 'A', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Radio, { value: 'B', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Radio, { value: 'C', onChange: this.handleChange })
+              { title: 'Radio', name: 'radioo' },
+              _react2.default.createElement(_index.Radio, { value: 'A' }),
+              _react2.default.createElement(_index.Radio, { value: 'B' }),
+              _react2.default.createElement(_index.Radio, { value: 'C' })
             )
           ),
           _react2.default.createElement(
             _index.Group,
             null,
-            _react2.default.createElement(_index.Switch, { name: 'aaa1', title: 'Switch One', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { name: 'aaa2', title: 'Switch Two', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { name: 'aaa3', title: 'Switch Three', onChange: this.handleChange }),
-            _react2.default.createElement(_index.Switch, { name: 'aaa4', title: 'Switch 4', onChange: this.handleChange }),
+            _react2.default.createElement(_index.Switch, { name: 'aaa1', title: 'Switch One' }),
+            _react2.default.createElement(_index.Switch, { name: 'aaa2', title: 'Switch Two' }),
+            _react2.default.createElement(_index.Switch, { name: 'aaa3', title: 'Switch Three' }),
+            _react2.default.createElement(_index.Switch, { name: 'aaa4', title: 'Switch 4' }),
             _react2.default.createElement(
               _index.CheckboxGroup,
-              { name: 'Checkbox ahoy', title: 'Switch 4', onChange: this.handleChange },
-              _react2.default.createElement(_index.Checkbox, { value: 'A', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Checkbox, { value: 'B', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Checkbox, { value: 'C', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Checkbox, { value: 'D', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Checkbox, { value: 'E', onChange: this.handleChange }),
-              _react2.default.createElement(_index.Checkbox, { value: 'F', onChange: this.handleChange })
+              { name: 'Checkbox ahoy', title: 'Switch 4' },
+              _react2.default.createElement(_index.Checkbox, { value: 'A' }),
+              _react2.default.createElement(_index.Checkbox, { value: 'B' }),
+              _react2.default.createElement(_index.Checkbox, { value: 'C' }),
+              _react2.default.createElement(_index.Checkbox, { value: 'D' }),
+              _react2.default.createElement(_index.Checkbox, { value: 'E' }),
+              _react2.default.createElement(_index.Checkbox, { value: 'F' })
             )
           )
         )

@@ -63,7 +63,7 @@ var Submit = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Com
     value: function render() {
       return _react2.default.createElement(
         'p',
-        { 'uk-margin': '', style: { textAlign: 'right', padding: '1.5em' } },
+        { className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
         _react2.default.createElement(
           'button',
           { style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
