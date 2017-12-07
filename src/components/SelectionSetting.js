@@ -18,8 +18,8 @@ class SelectionSetting extends Component {
 		}
 	}
 	
-	componentDidMount () {
-
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
@@ -31,8 +31,6 @@ class SelectionSetting extends Component {
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
 		const Selections = []
 		let defaultVal = this.state.value
 		if (this.props.children.forEach) {
@@ -64,13 +62,18 @@ class SelectionSetting extends Component {
 							</select>
 						</div>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 					<hr/>
 				</dl>
 			</div>
 	)
   }
+}
+
+SelectionSetting.defaultProps = {
+	title: null,
+	description: null
 }
 
 SelectionSetting.propTypes = {

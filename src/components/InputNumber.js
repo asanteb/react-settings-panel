@@ -11,21 +11,21 @@ const styles = {
 class InputNumber extends Component {
 	static displayName = "INPUT_NUMBER"
 	constructor() {
-	super()
-	this.state = {
-			value:0
+		super()
+		this.state = {
+				value:0
 		}
 	}
 
-	componentDidMount () {
-		// this.initProps()
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
   handleChange = (e) => {
 		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
-		this.props.store.settingsData[this.props.name] = e.target.value
-		this.setState({value: e.target.value})
+		this.props.store.settingsData[this.props.name] = parseFloat(e.target.value)
+		this.setState({value: parseFloat(e.target.value)})
   }
 
   render() {

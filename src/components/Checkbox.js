@@ -18,8 +18,8 @@ class Checkbox extends Component {
 		}
 	}
 
-	componentDidMount () {
-
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
@@ -30,7 +30,6 @@ class Checkbox extends Component {
   }
 
   render() {
-		const value = this.props.value ? this.props.value : ''
 
 	return (
 			<label>
@@ -40,10 +39,14 @@ class Checkbox extends Component {
 					onChange={(e) => this.handleChange(e, value)}
 					id="settings-checkbox"
 				/>
-				<span style={{padding: '0.5em'}}>{value}</span>
+				<span style={{padding: '0.5em'}}>{this.props.value}</span>
 			</label>
 	)
   }
+}
+
+Checkbox.defaultProps = {
+	value: ''
 }
 
 Checkbox.propTypes = {

@@ -19,8 +19,8 @@ class InputSetting extends Component {
 		}
 	}
 
-	componentDidMount () {
-		// this.initProps()
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
@@ -31,8 +31,6 @@ class InputSetting extends Component {
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
 
 	return (
 			<div>
@@ -46,7 +44,7 @@ class InputSetting extends Component {
 						id="settings-input"
 					/>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 					<hr/>
 				</dl>
@@ -54,6 +52,12 @@ class InputSetting extends Component {
 	)
   }
 }
+
+InputSetting.defaultProps = {
+	title: null, 
+	description: null
+};
+
 
 InputSetting.propTypes = {
 	onValue: propTypes.func,

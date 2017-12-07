@@ -17,8 +17,8 @@ class TextArea extends Component {
 		}
 	}
 	
-	componentDidMount () {
-
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
@@ -29,8 +29,7 @@ class TextArea extends Component {
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
+
 	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
@@ -43,13 +42,18 @@ class TextArea extends Component {
 						id="settings-textArea"
 					/>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 					<hr/>
 				</dl>
 			</div>
 	)
   }
+}
+
+TextArea.defaultProps = {
+	title: null,
+	description: null
 }
 
 TextArea.propTypes = {

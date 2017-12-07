@@ -18,8 +18,8 @@ class SwitchOption extends Component {
 		}
 	}
 	
-	componentDidMount () {
-	
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.checked ;
 	}
 
 
@@ -32,20 +32,17 @@ class SwitchOption extends Component {
 
 	render() {
 
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
-
 	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
-					<dt>{title}</dt>
+					<dt>{this.props.title}</dt>
 					<Switch
 						onChange={this.handleChange}
 						checked={this.state.checked}
 						id="switch-option"
 					/>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 				</dl>
 				<hr/>
@@ -53,6 +50,12 @@ class SwitchOption extends Component {
 	)
 	}
 }
+
+SwitchOption.defaultProps = {
+	title: null,
+	description: null
+}
+
 
 SwitchOption.propTypes = {
 	onChange: propTypes.func,
