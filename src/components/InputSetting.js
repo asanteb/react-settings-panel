@@ -3,9 +3,7 @@ import Switch from 'react-switch'
 import propTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
-const styles = {
-
-}
+const styles = {};
 
 @observer
 class InputSetting extends Component {
