@@ -27,15 +27,15 @@ class SwitchOption extends Component {
 
 
   handleChange = (checked) => {
-    const onChange = this.props.onChange
-    this.props.store.settingsData[this.props.name] = checked
-    if (this.props.onChange) onChange(this.props.store.settingsData)
+    const onChange = this.props.onChange;
+    this.props.store.settingsData[this.props.name] = checked;
+    if (this.props.onChange) onChange(this.props.store.settingsData);
     this.setState({ checked })
   };
 
   render() {
-    const title = this.props.title ? this.props.title : null
-    const description = this.props.description ? this.props.description : null
+    const title = this.props.title ? this.props.title : null;
+    const description = this.props.description ? this.props.description : null;
 
     if (this.state.titleHorizontal) {
       return (
