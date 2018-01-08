@@ -17,7 +17,6 @@ class InputSetting extends Component {
 		}
 	}
 
-
 	componentDidMount () {
 		// this.initProps()
 		this.initialValue = this.props.initialValue ? this.props.initialValue : null;

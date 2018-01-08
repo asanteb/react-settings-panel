@@ -16,7 +16,7 @@ const paths = {
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true&overlay=false',
-    path.join(paths.SRC, 'index.js'),
+    path.join(paths.SRC, 'start.js'),
   ],
   output: {
     path: paths.DIST,

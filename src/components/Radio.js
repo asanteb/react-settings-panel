@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
+import { observer } from 'mobx-react'
 
 const styles = {
 
 }
 
+@observer
 class Radio extends Component {
 	static displayName = "RADIO"
 	constructor() {
-    super()
-    this.state = {
+		super()
+		this.state = {
 			value:''
 		}
 	}
@@ -19,31 +21,37 @@ class Radio extends Component {
 
 	}
 
+	validate = () => {
+		return this.props.store[this.props.parentName][this.props.value]
+	}
 
-  handleChange = (e, name) => {
-		this.props.onChange({name: name, value: e.target.value})
+	handleChange = (e, value) => {
+		this.props.store.settingsData[this.props.parentName] = value
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
 		this.setState({value: e.target.value})
-  }
+	}
 
-  render() {
-		const name = this.props.name ? this.props.name : null
-
-    return (
+	render() {
+		const value = this.props.value ? this.props.value : ''
+		return (
 			<label>
 				<input
+					name={this.props.parentName}
+					value={this.props.value}
 					type='radio'
 					className='uk-radio'
-					onChange={(e) => this.handleChange(e, name)}
+					readOnly
+					onClick={(e) => this.handleChange(e, value)}
 					id="settings-radio"
 				/>
-				<span style={{padding: '0.5em'}}>{name}</span>
+				<span style={{padding: '0.5em'}}>{value}</span>
 			</label>
-    )
-  }
+		)
+	}
 }
 
 Radio.propTypes = {
-    name: propTypes.string,
+		value: propTypes.string,
 		onChange: propTypes.func,
 }
 

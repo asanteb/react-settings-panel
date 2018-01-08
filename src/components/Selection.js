@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
+import { observer } from 'mobx-react'
 
 const styles = {
 
 }
 
+@observer
 class Selection extends Component {
 	static displayName = "SELECTION"
 	constructor() {
@@ -20,26 +22,24 @@ class Selection extends Component {
 	}
 
 
-  handleChange = (e, name) => {
-		this.props.onChange({name: name, value: e.target.value})
+  handleChange = (e, value) => {
+		this.props.store.settingsData[this.props.parentName] = e.target.value
+		if (this.props.onChange) this.props.onChange(this.props.store.settingData)
 		this.setState({value: e.target.value})
   }
 
   render() {
-		const name = this.props.name ? this.props.name : null
-
+		const value = this.props.value ? this.props.value : null
     return (
-				<option
-					onChange={(e) => this.handleChange(e, name)}
-				>
-				{name}
+				<option>
+				{value}
 			</option>
     )
   }
 }
 
 Selection.propTypes = {
-    name: propTypes.string,
+    value: propTypes.string,
 		onChange: propTypes.func,
 }
 

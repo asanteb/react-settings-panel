@@ -1,20 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import SettingsPanel from './components/Layout'
+import Group from './components/Group'
+import Switch from './components/SwitchOption'
+import Input from './components/InputSetting'
+import TextArea from './components/TextAreaSetting'
+import Checkbox from './components/Checkbox'
+import CheckboxGroup from './components/CheckboxGroup'
+import Radio from './components/Radio'
+import RadioGroup from './components/RadioGroup'
+import Option from './components/Selection'
+import Selection from './components/SelectionSetting'
+import Toolbar from './components/Toolbar'
 
-import UIkit from 'uikit';
-import Icons from './assets/js/uikit-icons.min.js';
-import './assets/css/uikit.min.css';
-import './assets/css/main.css';
-// import mobX from './mobx/store.js';
-const mobx = ''
-import App from './App';
-
-UIkit.use(Icons)
-
-ReactDOM.render((
-  <App color={'#728ad8'} textColor={'black'}/>
-), document.getElementById('root'));
-
-if (module.hot) {
-  module.hot.accept()
+module.exports = {
+  Toolbar,
+  SettingsPanel,
+  Group,
+  Switch,
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup,
+  Option,
+  Selection,
+  Input,
+  TextArea
 }
