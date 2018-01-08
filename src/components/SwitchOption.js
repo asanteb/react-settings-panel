@@ -28,9 +28,7 @@ class SwitchOption extends Component {
 
   handleChange = (checked) => {
     const onChange = this.props.onChange;
-    if (this.props.store && this.props.store.settingsData) {
-      this.props.store.settingsData[this.props.name] = checked;
-    }
+    this.props.store.settingsData[this.props.name] = checked;
     if (this.props.onChange) onChange(this.props.store.settingsData);
     this.setState({ checked })
   };
