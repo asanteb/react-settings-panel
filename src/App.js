@@ -24,12 +24,12 @@ class Settings extends Component {
   componentDidMount() {}
 
   handleChange = (change) => {
-    //console.log(change)
-  }
+    // console.log(change)
+  };
 
   handleSubmit = (data) => {
     console.log(data)
-  }
+  };
 
   render() {
     
