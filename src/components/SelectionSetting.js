@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Switch from 'react-switch'
 import md5 from 'md5'
 import propTypes from 'prop-types'
-import { observer } from 'mobx-react'
-const styles = {
+import { inject, observer } from 'mobx-react';
 
-}
+const styles = {};
 
-@observer
+@inject('store') @observer
 class SelectionSetting extends Component {
 	static displayName = "SELECTION_SETTING"
 	constructor() {

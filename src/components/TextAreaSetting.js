@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
-const styles = {
+const styles = {};
 
-}
-
-@observer
+@inject('store') @observer
 class TextArea extends Component {
 	static displayName = "TEXT_AREA_SETTING"
 	constructor() {

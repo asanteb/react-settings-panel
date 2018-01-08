@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -48,7 +48,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var CheckboxSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var CheckboxSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(CheckboxSetting, _Component);
 
 	function CheckboxSetting() {
@@ -125,7 +125,8 @@ var CheckboxSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = funct
 		}
 	}]);
 	return CheckboxSetting;
-}(_react.Component), _class2.displayName = "CHECKBOX_SETTING", _temp)) || _class;
+}(_react.Component), _class2.displayName = "CHECKBOX_SETTING", _temp)) || _class) || _class);
+
 
 CheckboxSetting.propTypes = {
 	onValue: _propTypes2.default.func,

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types'
 import md5 from 'md5'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
-const styles = {
+const styles = {};
 
-}
-@observer
+@inject('store') @observer
 class Group extends Component {
 	static displayName = "GROUP"
 	constructor() {

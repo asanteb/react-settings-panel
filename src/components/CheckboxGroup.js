@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
 import md5 from 'md5'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
+const styles = {};
 
-const styles = {
-
-}
-@observer
+@inject('store') @observer
 class CheckboxSetting extends Component {
 	static displayName = "CHECKBOX_SETTING"
 	constructor() {
