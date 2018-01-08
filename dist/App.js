@@ -45,7 +45,7 @@ var Settings = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Settings.__proto__ || (0, _getPrototypeOf2.default)(Settings)).call(this));
 
     _this.handleChange = function (change) {
-      //console.log(change)
+      // console.log(change)
     };
 
     _this.handleSubmit = function (data) {
