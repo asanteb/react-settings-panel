@@ -53,6 +53,7 @@ var Checkbox = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxR
     var _this = (0, _possibleConstructorReturn3.default)(this, (Checkbox.__proto__ || (0, _getPrototypeOf2.default)(Checkbox)).call(this));
 
     _this.handleChange = function (e, value) {
+      if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
       _this.props.store.settingsData[_this.props.parentName][value] = !_this.state.value;
       if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
       _this.setState({ value: !_this.state.value });

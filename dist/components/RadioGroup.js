@@ -73,7 +73,7 @@ var RadioGroup = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mob
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
 			var Radios = [];
-
+			if (!this.props.store.settingsData) this.props.store.settingsData = [];
 			if (!this.props.store.settingsData[this.props.name]) {
 				this.props.store.settingsData[this.props.name] = {};
 			}

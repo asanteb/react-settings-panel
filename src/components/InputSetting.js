@@ -25,8 +25,9 @@ class InputSetting extends Component {
 
 
   handleChange = (e) => {
-		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
 		this.props.store.settingsData[this.props.name] = e.target.value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
 		this.setState({value: e.target.value});
   }
 

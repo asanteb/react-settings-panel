@@ -53,6 +53,7 @@ var Selection = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobx
 		var _this = (0, _possibleConstructorReturn3.default)(this, (Selection.__proto__ || (0, _getPrototypeOf2.default)(Selection)).call(this));
 
 		_this.handleChange = function (e, value) {
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.parentName] = e.target.value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingData);
 			_this.setState({ value: e.target.value });

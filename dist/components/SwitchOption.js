@@ -54,6 +54,7 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
 
     _this.handleChange = function (checked) {
       var onChange = _this.props.onChange;
+      if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
       _this.props.store.settingsData[_this.props.name] = checked;
       if (_this.props.onChange) onChange(_this.props.store.settingsData);
       _this.setState({ checked: checked });

@@ -58,6 +58,7 @@ var SelectionSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0
 
 		_this.handleChange = function (e, def) {
 			// if (this.state.value && loaded)
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });

@@ -19,12 +19,12 @@ class RadioGroup extends Component {
 	componentDidMount () {}
 
 	render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
-		const Radios = []
-
+		const title = this.props.title ? this.props.title : null;
+		const description = this.props.description ? this.props.description : null;
+		const Radios = [];
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
 		if (!this.props.store.settingsData[this.props.name]){
-			this.props.store.settingsData[this.props.name] = {}
+			this.props.store.settingsData[this.props.name] = {};
 		}
 
 		if (this.props.children.forEach) {

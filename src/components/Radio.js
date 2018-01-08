@@ -24,13 +24,14 @@ class Radio extends Component {
 	}
 
 	handleChange = (e, value) => {
-		this.props.store.settingsData[this.props.parentName] = value
-		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
-		this.setState({value: e.target.value})
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
+		this.props.store.settingsData[this.props.parentName] = value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
+		this.setState({value: e.target.value});
 	}
 
 	render() {
-		const value = this.props.value ? this.props.value : ''
+		const value = this.props.value ? this.props.value : '';
 		return (
 			<label>
 				<input

@@ -57,6 +57,7 @@ var Radio = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReac
 		};
 
 		_this.handleChange = function (e, value) {
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.parentName] = value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });

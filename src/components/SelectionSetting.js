@@ -24,14 +24,15 @@ class SelectionSetting extends Component {
 
   handleChange = (e, def) => {
 		// if (this.state.value && loaded)
-		this.props.store.settingsData[this.props.name] = e.target.value
-		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
-		this.setState({value: e.target.value})
+	  if (!this.props.store.settingsData) this.props.store.settingsData = [];
+		this.props.store.settingsData[this.props.name] = e.target.value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
+		this.setState({value: e.target.value});
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
+		const title = this.props.title ? this.props.title : null;
+		const description = this.props.description ? this.props.description : null;
 		const Selections = []
 		let defaultVal = this.state.value
 		if (this.props.children.forEach) {

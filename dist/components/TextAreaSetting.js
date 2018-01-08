@@ -53,8 +53,9 @@ var TextArea = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxR
 		var _this = (0, _possibleConstructorReturn3.default)(this, (TextArea.__proto__ || (0, _getPrototypeOf2.default)(TextArea)).call(this));
 
 		_this.handleChange = function (e) {
-			if (_this.props.onChange) _this.props.onChange(e.target.value);
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
 		};
 

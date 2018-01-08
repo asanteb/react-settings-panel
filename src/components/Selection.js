@@ -21,13 +21,14 @@ class Selection extends Component {
 
 
   handleChange = (e, value) => {
-		this.props.store.settingsData[this.props.parentName] = e.target.value
-		if (this.props.onChange) this.props.onChange(this.props.store.settingData)
-		this.setState({value: e.target.value})
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
+		this.props.store.settingsData[this.props.parentName] = e.target.value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingData);
+		this.setState({value: e.target.value});
   }
 
   render() {
-		const value = this.props.value ? this.props.value : null
+		const value = this.props.value ? this.props.value : null;
     return (
 				<option>
 				{value}
