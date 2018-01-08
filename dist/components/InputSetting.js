@@ -70,6 +70,8 @@ var InputSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			// this.initProps()
+			this.initialValue = this.props.initialValue ? this.props.initialValue : null;
+			if (this.initialValue) this.setState({ value: this.initialValue });
 		}
 	}, {
 		key: 'render',
@@ -113,7 +115,8 @@ InputSetting.propTypes = {
 	onSubmit: _propTypes2.default.func,
 	title: _propTypes2.default.string,
 	description: _propTypes2.default.string,
-	name: _propTypes2.default.string.isRequired
+	name: _propTypes2.default.string.isRequired,
+	initialValue: _propTypes2.default.string
 };
 
 exports.default = InputSetting;
