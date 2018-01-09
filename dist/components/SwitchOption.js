@@ -81,6 +81,8 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
     value: function render() {
       var title = this.props.title ? this.props.title : null;
       var description = this.props.description ? this.props.description : null;
+      var horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
+      var margin = typeof this.props.margin === 'boolean' ? this.props.margin : null;
 
       if (this.state.titleHorizontal) {
         return _react2.default.createElement(
@@ -88,7 +90,7 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
           null,
           _react2.default.createElement(
             'dl',
-            { className: 'uk-description-list uk-description-list-divider' },
+            { className: 'uk-description-list\n          ' + (horizontalDivider ? 'uk-description-list-divider' : '') + '\n          ' + (!margin ? 'uk-margin-remove' : '') },
             _react2.default.createElement(_reactSwitch2.default, {
               onChange: this.handleChange,
               checked: this.state.checked,
@@ -106,7 +108,7 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
               description
             )
           ),
-          _react2.default.createElement('hr', null)
+          horizontalDivider ? _react2.default.createElement('hr', null) : ''
         );
       }
       return _react2.default.createElement(
@@ -114,7 +116,7 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
         null,
         _react2.default.createElement(
           'dl',
-          { className: 'uk-description-list uk-description-list-divider' },
+          { className: 'uk-description-list\n          ' + (horizontalDivider ? 'uk-description-list-divider' : '') + '\n          ' + (!margin ? 'uk-margin-remove' : '') },
           _react2.default.createElement(
             'dt',
             null,
@@ -131,7 +133,7 @@ var SwitchOption = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _m
             description
           )
         ),
-        _react2.default.createElement('hr', null)
+        horizontalDivider ? _react2.default.createElement('hr', null) : ''
       );
     }
   }]);

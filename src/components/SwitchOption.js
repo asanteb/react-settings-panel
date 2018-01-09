@@ -37,11 +37,15 @@ class SwitchOption extends Component {
   render() {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
+    const margin = typeof this.props.margin === 'boolean' ? this.props.margin : null;
 
     if (this.state.titleHorizontal) {
       return (
         <div>
-          <dl className="uk-description-list uk-description-list-divider">
+          <dl className={`uk-description-list
+          ${horizontalDivider ? 'uk-description-list-divider' : ''}
+          ${!margin ? 'uk-margin-remove' : ''}`}>
             <Switch
               onChange={this.handleChange}
               checked={this.state.checked}
@@ -51,13 +55,15 @@ class SwitchOption extends Component {
               {description}
             </dd>
           </dl>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </div>
       )
     }
     return (
       <div>
-        <dl className="uk-description-list uk-description-list-divider">
+        <dl className={`uk-description-list
+          ${horizontalDivider ? 'uk-description-list-divider' : ''}
+          ${!margin ? 'uk-margin-remove' : ''}`}>
           <dt>{title}</dt>
           <Switch
             onChange={this.handleChange}
@@ -68,7 +74,7 @@ class SwitchOption extends Component {
             {description}
           </dd>
         </dl>
-        <hr/>
+        {horizontalDivider ? <hr/> : ''}
       </div>
     )
   }

@@ -7,9 +7,9 @@ const styles = {};
 
 @inject('store') @observer
 class TextArea extends Component {
-	static displayName = "TEXT_AREA_SETTING"
+	static displayName = "TEXT_AREA_SETTING";
 	constructor() {
-	super()
+	super();
 	this.state = {
 			value:''
 		}
