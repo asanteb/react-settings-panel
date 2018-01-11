@@ -33,7 +33,7 @@ class Settings extends Component {
 
   render() {
     
-    const styles = this.state.styles
+    const styles = this.state.styles;
     return (
 			<div >
         <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
