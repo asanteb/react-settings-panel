@@ -16,7 +16,6 @@ class Group extends Component {
   }
   render() {
 		let Children = [];
-		// console.log(JSON.stringify(this.props.children));
 		if (this.props.children && this.props.children.forEach){
 			this.props.children.forEach((c, i) => {
 				const child = React.cloneElement(c, {
@@ -31,9 +30,8 @@ class Group extends Component {
 				});
 			Children.push(child)
 		}
-		console.log(`Group children length: ${Children.length}`);
     return (
-			<div className='uk-card uk-card-default uk-card-body'>
+			<div className='uk-card uk-card-default uk-card-body uk-width-1-1'>
 					{Children.length ? Children.map(Child => Child) : null}
 			</div>
     )

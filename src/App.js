@@ -38,7 +38,7 @@ class Settings extends Component {
     const styles = this.state.styles;
     return (
 			<div >
-        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
+        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit} groupsInRows={true} >
           <Toolbar store={'sup'}/>
           <Group>
             <Switch title="Switch One" name={'a'} />

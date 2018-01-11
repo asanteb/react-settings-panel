@@ -47,7 +47,7 @@ class Settings extends Component {
     let Toolbar = null;
     let Groups = [];
     let SingleUnknownProp = null;
-    const { noButtons } = this.props;
+    const { noButtons, groupsInRows } = this.props;
     let Submit = null;
 
     if (noButtons) Submit = null;
@@ -80,18 +80,32 @@ class Settings extends Component {
       })
 
     }
+    let groupLayout = (
+      <Row style={{ margin: '0 auto' }}>
+        {
+          Groups.map((Group, i) => {
+            return <Col xs key={md5(`group${i}`)}>{Group}</Col>
+          })
+        }
+      </Row>
+    );
+    if (groupsInRows) {
+      groupLayout = (
+        <Col xl>
+          {
+            Groups.map((Group, i) => {
+              return <Row start={'xl'} style={{ margin: '8px' }} key={md5(`group${i}`)}>{Group}</Row>
+            })
+          }
+        </Col>
+      )
+    }
     return (
       <Provider store={this.state.mobX}>
         <div className='settings-layout' style={this.state.styles}>
           {Toolbar}
           <Grid fluid className='settings-main-container'>
-            <Row style={{ margin: '0 auto' }}>
-              {
-                Groups.map((Group, i) => {
-                  return <Col xs key={md5(`group${i}`)}>{Group}</Col>
-                })
-              }
-            </Row>
+            {groupLayout}
           </Grid>
           {SingleUnknownProp}
           {Submit}
