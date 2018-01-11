@@ -74,7 +74,7 @@ class Settings extends Component {
         }
       })
     } else {
-      const child = this.props.children
+      const child = this.props.children;
       SingleUnknownProp = React.cloneElement(child, {
         store: this.state.mobX
       })

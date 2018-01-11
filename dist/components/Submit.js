@@ -71,7 +71,7 @@ var Submit = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxRea
         ),
         _react2.default.createElement(
           'button',
-          { className: 'uk-button uk-button-primary' },
+          { className: 'uk-button uk-button-secondary' },
           'Primary'
         )
       );

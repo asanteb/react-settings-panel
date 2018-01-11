@@ -64,7 +64,8 @@ var Group = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReac
 			var _this2 = this;
 
 			var Children = [];
-			if (this.props.children.forEach) {
+			// console.log(JSON.stringify(this.props.children));
+			if (this.props.children && this.props.children.forEach) {
 				this.props.children.forEach(function (c, i) {
 					var child = _react2.default.cloneElement(c, {
 						store: _this2.props.store,
@@ -72,13 +73,18 @@ var Group = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReac
 					});
 					Children.push(child);
 				});
+			} else if (this.props.children) {
+				var child = _react2.default.cloneElement(this.props.children, {
+					store: this.props.store
+				});
+				Children.push(child);
 			}
 			return _react2.default.createElement(
 				'div',
 				{ className: 'uk-card uk-card-default uk-card-body' },
-				Children.map(function (Child) {
+				Children.length ? Children.map(function (Child) {
 					return Child;
-				})
+				}) : null
 			);
 		}
 	}]);

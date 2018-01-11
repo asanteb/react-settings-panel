@@ -7,7 +7,7 @@ const styles = {};
 
 @inject('store') @observer
 class Group extends Component {
-	static displayName = "GROUP"
+	static displayName = "GROUP";
 	constructor() {
     super();
     this.state = {
@@ -15,19 +15,25 @@ class Group extends Component {
     }
   }
   render() {
-		let Children = []
-		if (this.props.children.forEach){
+		let Children = [];
+		// console.log(JSON.stringify(this.props.children));
+		if (this.props.children && this.props.children.forEach){
 			this.props.children.forEach((c, i) => {
 				const child = React.cloneElement(c, {
 					store: this.props.store,
 					key: md5(`group${i}`)
-				})
+				});
 				Children.push(child)
 			})
+		} else if (this.props.children) {
+			const child = React.cloneElement(this.props.children , {
+					store: this.props.store
+				});
+			Children.push(child)
 		}
     return (
 			<div className='uk-card uk-card-default uk-card-body'>
-					{Children.map(Child => Child)}
+					{Children.length ? Children.map(Child => Child) : null}
 			</div>
     )
   }
