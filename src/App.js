@@ -21,7 +21,9 @@ class Settings extends Component {
     this.state = {}
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+	  // do nothing yet
+  }
 
   handleChange = (change) => {
     // console.log(change)

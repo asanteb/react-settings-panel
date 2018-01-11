@@ -60,12 +60,12 @@ class Settings extends Component {
 
     if (this.props.children.forEach) {
       this.props.children.forEach(child => {
-        if (child.type.displayName === 'TOOLBAR') {
+        if (child.type.wrappedComponent.displayName === 'TOOLBAR') {
           Toolbar = React.cloneElement(child, {
             store: this.state.mobX
           })
         }
-        if (child.type.displayName === 'GROUP') {
+        if (child.type.wrappedComponent.displayName === 'GROUP') {
           const g = React.cloneElement(child, {
             store: this.state.mobX
           });

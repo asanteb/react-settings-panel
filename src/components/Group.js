@@ -31,6 +31,7 @@ class Group extends Component {
 				});
 			Children.push(child)
 		}
+		console.log(`Group children length: ${Children.length}`);
     return (
 			<div className='uk-card uk-card-default uk-card-body'>
 					{Children.length ? Children.map(Child => Child) : null}

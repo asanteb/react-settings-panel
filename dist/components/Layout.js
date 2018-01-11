@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -146,6 +150,7 @@ var Settings = function (_Component) {
           store: this.state.mobX
         });
       }
+      console.log((0, _stringify2.default)(Groups));
       return _react2.default.createElement(
         _mobxReact.Provider,
         { store: this.state.mobX },
