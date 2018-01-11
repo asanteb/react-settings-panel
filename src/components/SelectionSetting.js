@@ -21,29 +21,32 @@ class SelectionSetting extends Component {
 
 	}
 
-
   handleChange = (e, def) => {
 		// if (this.state.value && loaded)
 	  if (!this.props.store.settingsData) this.props.store.settingsData = [];
 		this.props.store.settingsData[this.props.name] = e.target.value;
 		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
 		this.setState({value: e.target.value});
-  }
+  };
 
   render() {
 		const title = this.props.title ? this.props.title : null;
 		const description = this.props.description ? this.props.description : null;
-		const Selections = []
+		const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width')
+			? this.props.width
+			: "";
+
+		const Selections = [];
 		let defaultVal = this.state.value
 		if (this.props.children.forEach) {
 			this.props.children.forEach((child, i) => {
-				if (child.type.displayName === 'SELECTION') {
+				if (child.type.wrappedComponent.displayName === 'SELECTION') {
 					const c = React.cloneElement(child, {
 						store: this.props.store,
 						key: md5(`selection${i}`),
 						parentName: this.props.name
-					})
-					Selections.push(c)
+					});
+					Selections.push(c);
 					if (i === 0 && !this.state.value) {
 					 defaultVal = c.props.value
 					}
@@ -53,10 +56,11 @@ class SelectionSetting extends Component {
 
 	return (
 			<div>
-				<dl className="uk-description-list uk-description-list-divider">
-					<dt>{this.props.title}</dt>
+				<dl className={`uk-description-list uk-description-list-divider`}>
+					<dt>{title}</dt>
 						<div className="uk-margin">
-							<select className='uk-select'
+							<select
+								className={`uk-select ${width}`}
 								onChange={(e) => this.handleChange(e, defaultVal)}
 							>
 								<option value=''>Select an Item</option>
@@ -79,6 +83,6 @@ SelectionSetting.propTypes = {
 		title: propTypes.string,
 		description: propTypes.string,
 		name: propTypes.string.isRequired
-}
+};
 
 export default SelectionSetting

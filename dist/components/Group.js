@@ -64,24 +64,24 @@ var Group = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReac
 			var _this2 = this;
 
 			var Children = [];
-			// console.log(JSON.stringify(this.props.children));
 			if (this.props.children && this.props.children.forEach) {
 				this.props.children.forEach(function (c, i) {
 					var child = _react2.default.cloneElement(c, {
 						store: _this2.props.store,
-						key: (0, _md2.default)('group' + i)
+						key: (0, _md2.default)('group-child-' + i)
 					});
 					Children.push(child);
 				});
-			} else if (this.props.children) {
+			} else if (this.props.children && !this.props.children.forEach) {
 				var child = _react2.default.cloneElement(this.props.children, {
-					store: this.props.store
+					store: this.props.store,
+					key: (0, _md2.default)('group-child-' + 0)
 				});
 				Children.push(child);
 			}
 			return _react2.default.createElement(
 				'div',
-				{ className: 'uk-card uk-card-default uk-card-body' },
+				{ className: 'uk-card uk-card-default uk-card-body uk-width-1-1' },
 				Children.length ? Children.map(function (Child) {
 					return Child;
 				}) : null

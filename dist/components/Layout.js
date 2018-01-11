@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -110,7 +106,9 @@ var Settings = function (_Component) {
       var Toolbar = null;
       var Groups = [];
       var SingleUnknownProp = null;
-      var noButtons = this.props.noButtons;
+      var _props = this.props,
+          noButtons = _props.noButtons,
+          groupsInRows = _props.groupsInRows;
 
       var Submit = null;
 
@@ -131,17 +129,18 @@ var Settings = function (_Component) {
 
       if (this.props.children.forEach) {
         this.props.children.forEach(function (child) {
-          if (child.type.displayName === 'TOOLBAR') {
-            Toolbar = _react2.default.cloneElement(child, {
-              store: _this2.state.mobX
-            });
-          }
-          if (child.type.displayName === 'GROUP') {
-            var g = _react2.default.cloneElement(child, {
-              store: _this2.state.mobX
-            });
-
-            Groups.push(g);
+          if (child) {
+            if (child.type.wrappedComponent.displayName === 'TOOLBAR') {
+              Toolbar = _react2.default.cloneElement(child, {
+                store: _this2.state.mobX
+              });
+            }
+            if (child.type.wrappedComponent.displayName === 'GROUP') {
+              var g = _react2.default.cloneElement(child, {
+                store: _this2.state.mobX
+              });
+              Groups.push(g);
+            }
           }
         });
       } else {
@@ -150,7 +149,36 @@ var Settings = function (_Component) {
           store: this.state.mobX
         });
       }
-      console.log((0, _stringify2.default)(Groups));
+      var groupLayout = _react2.default.createElement(
+        _reactFlexboxGrid.Row,
+        { style: { margin: '0 auto' } },
+        Groups.map(function (Group, i) {
+          return _react2.default.createElement(
+            _reactFlexboxGrid.Col,
+            {
+              key: (0, _md2.default)('group-col-' + i),
+              xs: true
+            },
+            Group
+          );
+        })
+      );
+      if (groupsInRows) {
+        groupLayout = _react2.default.createElement(
+          _reactFlexboxGrid.Col,
+          { xl: true },
+          Groups.map(function (Group, i) {
+            return _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              {
+                key: (0, _md2.default)('group-row-' + i),
+                style: { margin: '8px' }
+              },
+              Group
+            );
+          })
+        );
+      }
       return _react2.default.createElement(
         _mobxReact.Provider,
         { store: this.state.mobX },
@@ -161,17 +189,7 @@ var Settings = function (_Component) {
           _react2.default.createElement(
             _reactFlexboxGrid.Grid,
             { fluid: true, className: 'settings-main-container' },
-            _react2.default.createElement(
-              _reactFlexboxGrid.Row,
-              { style: { margin: '0 auto' } },
-              Groups.map(function (Group, i) {
-                return _react2.default.createElement(
-                  _reactFlexboxGrid.Col,
-                  { xs: true, key: (0, _md2.default)('group' + i) },
-                  Group
-                );
-              })
-            )
+            groupLayout
           ),
           SingleUnknownProp,
           Submit

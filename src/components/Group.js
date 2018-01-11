@@ -20,13 +20,14 @@ class Group extends Component {
 			this.props.children.forEach((c, i) => {
 				const child = React.cloneElement(c, {
 					store: this.props.store,
-					key: md5(`group${i}`)
+					key: md5(`group-child-${i}`)
 				});
 				Children.push(child)
 			})
-		} else if (this.props.children) {
+		} else if (this.props.children && !this.props.children.forEach) {
 			const child = React.cloneElement(this.props.children , {
-					store: this.props.store
+					store: this.props.store,
+					key: md5(`group-child-${0}`)
 				});
 			Children.push(child)
 		}

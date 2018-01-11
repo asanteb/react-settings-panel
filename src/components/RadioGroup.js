@@ -29,7 +29,7 @@ class RadioGroup extends Component {
 
 		if (this.props.children.forEach) {
 			this.props.children.forEach((child, i) => {
-				if (child.type.displayName === 'RADIO') {
+				if (child.type.wrappedComponent.displayName === 'RADIO') {
 					const c = React.cloneElement(child, {
 						store: this.props.store,
 						key: md5(`radio${i}`),

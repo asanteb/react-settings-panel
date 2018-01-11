@@ -37,7 +37,7 @@ class CheckboxSetting extends Component {
 
 		if (this.props.children.forEach) {
 			this.props.children.forEach((child, i) => {
-				if (child.type.displayName === 'CHECKBOX') {
+				if (child.type.wrappedComponent.displayName === 'CHECKBOX') {
 					const c = React.cloneElement(child, {
 						store: this.props.store,
 						key: md5(`boxes${i}`),

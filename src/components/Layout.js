@@ -60,17 +60,18 @@ class Settings extends Component {
 
     if (this.props.children.forEach) {
       this.props.children.forEach(child => {
-        if (child.type.wrappedComponent.displayName === 'TOOLBAR') {
-          Toolbar = React.cloneElement(child, {
-            store: this.state.mobX
-          })
-        }
-        if (child.type.wrappedComponent.displayName === 'GROUP') {
-          const g = React.cloneElement(child, {
-            store: this.state.mobX
-          });
-
-          Groups.push(g)
+        if (child) {
+          if (child.type.wrappedComponent.displayName === 'TOOLBAR') {
+            Toolbar = React.cloneElement(child, {
+              store: this.state.mobX
+            })
+          }
+          if (child.type.wrappedComponent.displayName === 'GROUP') {
+            const g = React.cloneElement(child, {
+              store: this.state.mobX
+            });
+            Groups.push(g)
+          }
         }
       })
     } else {
@@ -84,7 +85,14 @@ class Settings extends Component {
       <Row style={{ margin: '0 auto' }}>
         {
           Groups.map((Group, i) => {
-            return <Col xs key={md5(`group${i}`)}>{Group}</Col>
+            return (
+              <Col
+                key={md5(`group-col-${i}`)}
+                xs
+              >
+                {Group}
+              </Col>
+            )
           })
         }
       </Row>
@@ -94,7 +102,14 @@ class Settings extends Component {
         <Col xl>
           {
             Groups.map((Group, i) => {
-              return <Row start={'xl'} style={{ margin: '8px' }} key={md5(`group${i}`)}>{Group}</Row>
+              return (
+                <Row
+                  key={md5(`group-row-${i}`)}
+                  style={{ margin: '8px' }}
+                >
+                  {Group}
+                </Row>
+              )
             })
           }
         </Col>

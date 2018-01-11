@@ -28,15 +28,18 @@ class TextArea extends Component {
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
+		const title = this.props.title ? this.props.title : null;
+		const description = this.props.description ? this.props.description : null;
+		const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width')
+			? this.props.width
+			: "";
 	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
-					<dt>{this.props.title}</dt>
+					<dt>{title}</dt>
 					<textarea
 						type='text'
-						className='uk-textarea'
+						className={`uk-textarea ${width}`}
 						value={this.state.value}
 						onChange={this.handleChange}
 						id="settings-textArea"

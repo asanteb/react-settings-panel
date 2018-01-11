@@ -58,7 +58,9 @@ var Settings = function (_Component) {
 
   (0, _createClass3.default)(Settings, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      // do nothing yet
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -69,7 +71,7 @@ var Settings = function (_Component) {
         null,
         _react2.default.createElement(
           _index.SettingsPanel,
-          { color: '#728ad8', onSubmit: this.handleSubmit },
+          { color: '#728ad8', onSubmit: this.handleSubmit, groupsInRows: true },
           _react2.default.createElement(_index.Toolbar, { store: 'sup' }),
           _react2.default.createElement(
             _index.Group,
