@@ -81,11 +81,13 @@ var SelectionSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0
 
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
+			var width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+
 			var Selections = [];
 			var defaultVal = this.state.value;
 			if (this.props.children.forEach) {
 				this.props.children.forEach(function (child, i) {
-					if (child.type.displayName === 'SELECTION') {
+					if (child.type.wrappedComponent.displayName === 'SELECTION') {
 						var c = _react2.default.cloneElement(child, {
 							store: _this2.props.store,
 							key: (0, _md2.default)('selection' + i),
@@ -108,14 +110,15 @@ var SelectionSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0
 					_react2.default.createElement(
 						'dt',
 						null,
-						this.props.title
+						title
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'uk-margin' },
 						_react2.default.createElement(
 							'select',
-							{ className: 'uk-select',
+							{
+								className: 'uk-select ' + width,
 								onChange: function onChange(e) {
 									return _this2.handleChange(e, defaultVal);
 								}

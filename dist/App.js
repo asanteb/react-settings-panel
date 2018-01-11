@@ -79,10 +79,10 @@ var Settings = function (_Component) {
             _react2.default.createElement(_index.Switch, { title: 'Switch One', name: 'a' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Two', name: 'b' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: 'c' }),
-            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd' }),
+            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd', width: 'uk-width-2-3' }),
             _react2.default.createElement(
               _index.Selection,
-              { title: 'Selection ', name: 'e' },
+              { title: 'Selection', name: 'e', width: 'uk-width-1-5' },
               _react2.default.createElement(_index.Option, { value: 'a' }),
               _react2.default.createElement(_index.Option, { value: 'b' }),
               _react2.default.createElement(_index.Option, { value: 'c' })
@@ -93,7 +93,7 @@ var Settings = function (_Component) {
             null,
             _react2.default.createElement(_index.Switch, { title: 'Switch One', name: '1' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: '2' }),
-            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3' }),
+            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3', width: 'uk-width-2-3' }),
             _react2.default.createElement(
               _index.RadioGroup,
               { title: 'Radio', name: 'radioo' },

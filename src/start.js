@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 import mobX from './mobx/store.js';
 import App from './App';
 

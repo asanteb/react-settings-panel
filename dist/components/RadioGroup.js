@@ -80,7 +80,7 @@ var RadioGroup = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mob
 
 			if (this.props.children.forEach) {
 				this.props.children.forEach(function (child, i) {
-					if (child.type.displayName === 'RADIO') {
+					if (child.type.wrappedComponent.displayName === 'RADIO') {
 						var c = _react2.default.cloneElement(child, {
 							store: _this2.props.store,
 							key: (0, _md2.default)('radio' + i),

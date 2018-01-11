@@ -7,7 +7,7 @@ const styles = {};
 
 @inject('store') @observer
 class Submit extends Component {
-	static displayName = "SUBMIT"
+	static displayName = "SUBMIT";
 	constructor() {
     super();
     this.state = {

@@ -85,7 +85,7 @@ var CheckboxSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0,
 
 			if (this.props.children.forEach) {
 				this.props.children.forEach(function (child, i) {
-					if (child.type.displayName === 'CHECKBOX') {
+					if (child.type.wrappedComponent.displayName === 'CHECKBOX') {
 						var c = _react2.default.cloneElement(child, {
 							store: _this2.props.store,
 							key: (0, _md2.default)('boxes' + i),

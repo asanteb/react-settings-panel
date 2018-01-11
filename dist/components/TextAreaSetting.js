@@ -73,6 +73,7 @@ var TextArea = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxR
 		value: function render() {
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
+			var width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -82,11 +83,11 @@ var TextArea = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxR
 					_react2.default.createElement(
 						'dt',
 						null,
-						this.props.title
+						title
 					),
 					_react2.default.createElement('textarea', {
 						type: 'text',
-						className: 'uk-textarea',
+						className: 'uk-textarea ' + width,
 						value: this.state.value,
 						onChange: this.handleChange,
 						id: 'settings-textArea'

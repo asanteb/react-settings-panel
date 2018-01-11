@@ -5,6 +5,8 @@ import { Provider } from 'mobx-react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 import '../assets/css/uikit.min.css';
 import '../assets/css/main.css';
+
+import SubmitButtons from './Submit';
 // UIkit.use(Icons)
 
 const defaultStyles = {
@@ -52,10 +54,7 @@ class Settings extends Component {
 
     if (noButtons) Submit = null;
     else Submit = (
-      <p className='uk-margin' style={{ textAlign: 'right', padding: '1.5em' }}>
-        <button onClick={this.clearData} style={{ backgroundColor: 'white' }} className="uk-button uk-button-default">Cancel</button>
-        <button onClick={this.submitData} className="uk-button uk-button-primary">Submit</button>
-      </p>
+      <SubmitButtons />
     );
 
     if (this.props.children.forEach) {

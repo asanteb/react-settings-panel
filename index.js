@@ -1,3 +1,3 @@
-var assets = require('./dist/index.js')
+var assets = require('./dist/index.js');
 
-module.exports = assets
+module.exports = assets;
