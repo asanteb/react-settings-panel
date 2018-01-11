@@ -54,7 +54,7 @@ class Settings extends Component {
 
     if (noButtons) Submit = null;
     else Submit = (
-      <SubmitButtons />
+      <SubmitButtons submit={this.submitData} clear={this.clearData} />
     );
 
     if (this.props.children.forEach) {

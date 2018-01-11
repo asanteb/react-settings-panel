@@ -48,6 +48,10 @@ require('../assets/css/uikit.min.css');
 
 require('../assets/css/main.css');
 
+var _Submit = require('./Submit');
+
+var _Submit2 = _interopRequireDefault(_Submit);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // UIkit.use(Icons)
@@ -112,20 +116,7 @@ var Settings = function (_Component) {
 
       var Submit = null;
 
-      if (noButtons) Submit = null;else Submit = _react2.default.createElement(
-        'p',
-        { className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
-        _react2.default.createElement(
-          'button',
-          { onClick: this.clearData, style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
-          'Cancel'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.submitData, className: 'uk-button uk-button-primary' },
-          'Submit'
-        )
-      );
+      if (noButtons) Submit = null;else Submit = _react2.default.createElement(_Submit2.default, { submit: this.submitData, clear: this.clearData });
 
       if (this.props.children.forEach) {
         this.props.children.forEach(function (child) {

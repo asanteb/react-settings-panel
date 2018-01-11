@@ -17,8 +17,8 @@ class Submit extends Component {
   render() {
     return (
 			<p className='uk-margin' style={{textAlign: 'right', padding: '1.5em'}}>
-        <button style={{backgroundColor: 'white'}} className="uk-button uk-button-default">Default</button>
-        <button className="uk-button uk-button-secondary">Primary</button>
+        <button onClick={this.props.clear} style={{backgroundColor: 'white'}} className="uk-button uk-button-default">Cancel</button>
+        <button onClick={this.props.submit} className="uk-button uk-button-secondary">Submit</button>
       </p>
     )
   }

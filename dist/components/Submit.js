@@ -66,13 +66,13 @@ var Submit = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxRea
         { className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
         _react2.default.createElement(
           'button',
-          { style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
-          'Default'
+          { onClick: this.props.clear, style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
+          'Cancel'
         ),
         _react2.default.createElement(
           'button',
-          { className: 'uk-button uk-button-secondary' },
-          'Primary'
+          { onClick: this.props.submit, className: 'uk-button uk-button-secondary' },
+          'Submit'
         )
       );
     }

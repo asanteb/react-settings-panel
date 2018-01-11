@@ -26,7 +26,7 @@ class Settings extends Component {
   }
 
   handleChange = (change) => {
-    // console.log(change)
+    console.log(change)
   };
 
   handleSubmit = (data) => {
