@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var Selection = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var Selection = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(Selection, _Component);
 
 	function Selection() {
@@ -53,6 +53,7 @@ var Selection = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_
 		var _this = (0, _possibleConstructorReturn3.default)(this, (Selection.__proto__ || (0, _getPrototypeOf2.default)(Selection)).call(this));
 
 		_this.handleChange = function (e, value) {
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.parentName] = e.target.value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingData);
 			_this.setState({ value: e.target.value });
@@ -79,7 +80,8 @@ var Selection = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_
 		}
 	}]);
 	return Selection;
-}(_react.Component), _class2.displayName = "SELECTION", _temp)) || _class;
+}(_react.Component), _class2.displayName = "SELECTION", _temp)) || _class) || _class);
+
 
 Selection.propTypes = {
 	value: _propTypes2.default.string,

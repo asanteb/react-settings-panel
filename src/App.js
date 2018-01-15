@@ -21,29 +21,31 @@ class Settings extends Component {
     this.state = {}
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+	  // do nothing yet
+  }
 
   handleChange = (change) => {
-    //console.log(change)
-  }
+    console.log(change)
+  };
 
   handleSubmit = (data) => {
     console.log(data)
-  }
+  };
 
   render() {
     
-    const styles = this.state.styles
+    const styles = this.state.styles;
     return (
 			<div >
-        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
+        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit} groupsInRows={true} >
           <Toolbar store={'sup'}/>
           <Group>
             <Switch title="Switch One" name={'a'} />
             <Switch title="Switch Two" name={'b'} />
             <Switch title="Switch Three" name={'c'} />
-            <Input title="Input One" name={'d'} />
-            <Selection title="Selection " name={'e'} >
+            <Input title="Input One" name={'d'} width={'uk-width-2-3'}/>
+            <Selection title="Selection" name={'e'} width={'uk-width-1-5'}>
               <Option value='a' />
               <Option value='b' />
               <Option value='c' />
@@ -52,7 +54,7 @@ class Settings extends Component {
           <Group>
             <Switch title="Switch One" name='1' />
             <Switch title="Switch Three" name='2' />
-            <TextArea title="TextArea" name='3' />
+            <TextArea title="TextArea" name='3' width={'uk-width-2-3'}/>
             <RadioGroup title="Radio" name='radioo' >
               <Radio value='A' />
               <Radio value='B' />

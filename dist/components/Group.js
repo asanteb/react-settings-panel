@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var Group = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var Group = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(Group, _Component);
 
 	function Group() {
@@ -64,25 +64,30 @@ var Group = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Comp
 			var _this2 = this;
 
 			var Children = [];
-			if (this.props.children.forEach) {
+			if (this.props.children && this.props.children.forEach) {
 				this.props.children.forEach(function (c, i) {
 					var child = _react2.default.cloneElement(c, {
 						store: _this2.props.store,
-						key: (0, _md2.default)('group' + i)
+						key: (0, _md2.default)('group-child-' + i)
 					});
 					Children.push(child);
 				});
+			} else if (this.props.children && !this.props.children.forEach) {
+				var child = _react2.default.cloneElement(this.props.children, {
+					store: this.props.store,
+					key: (0, _md2.default)('group-child-' + 0)
+				});
+				Children.push(child);
 			}
 			return _react2.default.createElement(
 				'div',
-				{ className: 'uk-card uk-card-default uk-card-body' },
-				Children.map(function (Child) {
+				{ className: 'uk-card uk-card-default uk-card-body uk-width-1-1' },
+				Children.length ? Children.map(function (Child) {
 					return Child;
-				})
+				}) : null
 			);
 		}
 	}]);
 	return Group;
-}(_react.Component), _class2.displayName = "GROUP", _temp)) || _class;
-
+}(_react.Component), _class2.displayName = "GROUP", _temp)) || _class) || _class);
 exports.default = Group;

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
-const styles = {
+const styles = {};
 
-}
-
-@observer
+@inject('store') @observer
 class Selection extends Component {
 	static displayName = "SELECTION"
 	constructor() {
@@ -23,13 +21,14 @@ class Selection extends Component {
 
 
   handleChange = (e, value) => {
-		this.props.store.settingsData[this.props.parentName] = e.target.value
-		if (this.props.onChange) this.props.onChange(this.props.store.settingData)
-		this.setState({value: e.target.value})
-  }
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
+		this.props.store.settingsData[this.props.parentName] = e.target.value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingData);
+		this.setState({value: e.target.value});
+  };
 
   render() {
-		const value = this.props.value ? this.props.value : null
+		const value = this.props.value ? this.props.value : null;
     return (
 				<option>
 				{value}

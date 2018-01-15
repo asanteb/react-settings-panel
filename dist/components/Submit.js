@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var Submit = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var Submit = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(Submit, _Component);
 
   function Submit() {
@@ -66,18 +66,17 @@ var Submit = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Com
         { className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
         _react2.default.createElement(
           'button',
-          { style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
-          'Default'
+          { onClick: this.props.clear, style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
+          'Cancel'
         ),
         _react2.default.createElement(
           'button',
-          { className: 'uk-button uk-button-primary' },
-          'Primary'
+          { onClick: this.props.submit, className: 'uk-button uk-button-secondary' },
+          'Submit'
         )
       );
     }
   }]);
   return Submit;
-}(_react.Component), _class2.displayName = "SUBMIT", _temp)) || _class;
-
+}(_react.Component), _class2.displayName = "SUBMIT", _temp)) || _class) || _class);
 exports.default = Submit;

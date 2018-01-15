@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome'
 import propTypes from 'prop-types'
-import { observer } from 'mobx-react'
-const styles = {
+import { inject, observer } from 'mobx-react';
 
-}
-@observer
+const styles = {};
+
+@inject('store') @observer
 class Toolbar extends Component {
 	static displayName = "TOOLBAR"
 	constructor() {

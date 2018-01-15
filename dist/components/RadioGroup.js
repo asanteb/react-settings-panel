@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -48,7 +48,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var RadioGroup = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var RadioGroup = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(RadioGroup, _Component);
 
 	function RadioGroup() {
@@ -73,14 +73,14 @@ var RadioGroup = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
 			var Radios = [];
-
+			if (!this.props.store.settingsData) this.props.store.settingsData = [];
 			if (!this.props.store.settingsData[this.props.name]) {
 				this.props.store.settingsData[this.props.name] = {};
 			}
 
 			if (this.props.children.forEach) {
 				this.props.children.forEach(function (child, i) {
-					if (child.type.displayName === 'RADIO') {
+					if (child.type.wrappedComponent.displayName === 'RADIO') {
 						var c = _react2.default.cloneElement(child, {
 							store: _this2.props.store,
 							key: (0, _md2.default)('radio' + i),
@@ -124,7 +124,8 @@ var RadioGroup = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (
 		}
 	}]);
 	return RadioGroup;
-}(_react.Component), _class2.displayName = "RADIO_SETTING", _temp)) || _class;
+}(_react.Component), _class2.displayName = "RADIO_SETTING", _temp)) || _class) || _class);
+
 
 RadioGroup.propTypes = {
 	onValue: _propTypes2.default.func,

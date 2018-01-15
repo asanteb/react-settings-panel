@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -48,7 +48,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var SelectionSetting = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(SelectionSetting, _Component);
 
 	function SelectionSetting() {
@@ -58,6 +58,7 @@ var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = func
 
 		_this.handleChange = function (e, def) {
 			// if (this.state.value && loaded)
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
@@ -80,11 +81,13 @@ var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = func
 
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
+			var width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+
 			var Selections = [];
 			var defaultVal = this.state.value;
 			if (this.props.children.forEach) {
 				this.props.children.forEach(function (child, i) {
-					if (child.type.displayName === 'SELECTION') {
+					if (child.type.wrappedComponent.displayName === 'SELECTION') {
 						var c = _react2.default.cloneElement(child, {
 							store: _this2.props.store,
 							key: (0, _md2.default)('selection' + i),
@@ -107,14 +110,15 @@ var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = func
 					_react2.default.createElement(
 						'dt',
 						null,
-						this.props.title
+						title
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'uk-margin' },
 						_react2.default.createElement(
 							'select',
-							{ className: 'uk-select',
+							{
+								className: 'uk-select ' + width,
 								onChange: function onChange(e) {
 									return _this2.handleChange(e, defaultVal);
 								}
@@ -140,7 +144,8 @@ var SelectionSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = func
 		}
 	}]);
 	return SelectionSetting;
-}(_react.Component), _class2.displayName = "SELECTION_SETTING", _temp)) || _class;
+}(_react.Component), _class2.displayName = "SELECTION_SETTING", _temp)) || _class) || _class);
+
 
 SelectionSetting.propTypes = {
 	onValue: _propTypes2.default.func,

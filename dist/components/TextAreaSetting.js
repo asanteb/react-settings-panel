@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var TextArea = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(TextArea, _Component);
 
 	function TextArea() {
@@ -53,8 +53,9 @@ var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
 		var _this = (0, _possibleConstructorReturn3.default)(this, (TextArea.__proto__ || (0, _getPrototypeOf2.default)(TextArea)).call(this));
 
 		_this.handleChange = function (e) {
-			if (_this.props.onChange) _this.props.onChange(e.target.value);
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.name] = e.target.value;
+			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
 		};
 
@@ -72,6 +73,7 @@ var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
 		value: function render() {
 			var title = this.props.title ? this.props.title : null;
 			var description = this.props.description ? this.props.description : null;
+			var width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -81,11 +83,11 @@ var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
 					_react2.default.createElement(
 						'dt',
 						null,
-						this.props.title
+						title
 					),
 					_react2.default.createElement('textarea', {
 						type: 'text',
-						className: 'uk-textarea',
+						className: 'uk-textarea ' + width,
 						value: this.state.value,
 						onChange: this.handleChange,
 						id: 'settings-textArea'
@@ -101,7 +103,8 @@ var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
 		}
 	}]);
 	return TextArea;
-}(_react.Component), _class2.displayName = "TEXT_AREA_SETTING", _temp)) || _class;
+}(_react.Component), _class2.displayName = "TEXT_AREA_SETTING", _temp)) || _class) || _class);
+
 
 TextArea.propTypes = {
 	onValue: _propTypes2.default.func,

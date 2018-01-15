@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
 import md5 from 'md5'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
+const styles = {};
 
-const styles = {
-
-}
-@observer
+@inject('store') @observer
 class CheckboxSetting extends Component {
 	static displayName = "CHECKBOX_SETTING"
 	constructor() {
@@ -39,7 +37,7 @@ class CheckboxSetting extends Component {
 
 		if (this.props.children.forEach) {
 			this.props.children.forEach((child, i) => {
-				if (child.type.displayName === 'CHECKBOX') {
+				if (child.type.wrappedComponent.displayName === 'CHECKBOX') {
 					const c = React.cloneElement(child, {
 						store: this.props.store,
 						key: md5(`boxes${i}`),

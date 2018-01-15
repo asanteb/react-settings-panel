@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _dec, _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {};
 
-var Radio = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
+var Radio = (_dec = (0, _mobxReact.inject)('store'), _dec(_class = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
 	(0, _inherits3.default)(Radio, _Component);
 
 	function Radio() {
@@ -57,6 +57,7 @@ var Radio = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Comp
 		};
 
 		_this.handleChange = function (e, value) {
+			if (!_this.props.store.settingsData) _this.props.store.settingsData = [];
 			_this.props.store.settingsData[_this.props.parentName] = value;
 			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
 			_this.setState({ value: e.target.value });
@@ -100,7 +101,8 @@ var Radio = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Comp
 		}
 	}]);
 	return Radio;
-}(_react.Component), _class2.displayName = "RADIO", _temp)) || _class;
+}(_react.Component), _class2.displayName = "RADIO", _temp)) || _class) || _class);
+
 
 Radio.propTypes = {
 	value: _propTypes2.default.string,

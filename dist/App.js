@@ -45,7 +45,7 @@ var Settings = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Settings.__proto__ || (0, _getPrototypeOf2.default)(Settings)).call(this));
 
     _this.handleChange = function (change) {
-      //console.log(change)
+      console.log(change);
     };
 
     _this.handleSubmit = function (data) {
@@ -58,7 +58,9 @@ var Settings = function (_Component) {
 
   (0, _createClass3.default)(Settings, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      // do nothing yet
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -69,7 +71,7 @@ var Settings = function (_Component) {
         null,
         _react2.default.createElement(
           _index.SettingsPanel,
-          { color: '#728ad8', onSubmit: this.handleSubmit },
+          { color: '#728ad8', onSubmit: this.handleSubmit, groupsInRows: true },
           _react2.default.createElement(_index.Toolbar, { store: 'sup' }),
           _react2.default.createElement(
             _index.Group,
@@ -77,10 +79,10 @@ var Settings = function (_Component) {
             _react2.default.createElement(_index.Switch, { title: 'Switch One', name: 'a' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Two', name: 'b' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: 'c' }),
-            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd' }),
+            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd', width: 'uk-width-2-3' }),
             _react2.default.createElement(
               _index.Selection,
-              { title: 'Selection ', name: 'e' },
+              { title: 'Selection', name: 'e', width: 'uk-width-1-5' },
               _react2.default.createElement(_index.Option, { value: 'a' }),
               _react2.default.createElement(_index.Option, { value: 'b' }),
               _react2.default.createElement(_index.Option, { value: 'c' })
@@ -91,7 +93,7 @@ var Settings = function (_Component) {
             null,
             _react2.default.createElement(_index.Switch, { title: 'Switch One', name: '1' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: '2' }),
-            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3' }),
+            _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3', width: 'uk-width-2-3' }),
             _react2.default.createElement(
               _index.RadioGroup,
               { title: 'Radio', name: 'radioo' },

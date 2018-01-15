@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import Switch from 'react-switch'
 import propTypes from 'prop-types'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
-const styles = {
+const styles = {};
 
-}
-
-@observer
+@inject('store') @observer
 class TextArea extends Component {
-	static displayName = "TEXT_AREA_SETTING"
+	static displayName = "TEXT_AREA_SETTING";
 	constructor() {
-	super()
+	super();
 	this.state = {
 			value:''
 		}
@@ -23,21 +21,25 @@ class TextArea extends Component {
 
 
   handleChange = (e) => {
-		if (this.props.onChange) this.props.onChange(e.target.value)
-		this.props.store.settingsData[this.props.name] = e.target.value
+		if (!this.props.store.settingsData) this.props.store.settingsData = [];
+		this.props.store.settingsData[this.props.name] = e.target.value;
+		if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
 		this.setState({value: e.target.value})
   }
 
   render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
+		const title = this.props.title ? this.props.title : null;
+		const description = this.props.description ? this.props.description : null;
+		const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width')
+			? this.props.width
+			: "";
 	return (
 			<div>
 				<dl className="uk-description-list uk-description-list-divider">
-					<dt>{this.props.title}</dt>
+					<dt>{title}</dt>
 					<textarea
 						type='text'
-						className='uk-textarea'
+						className={`uk-textarea ${width}`}
 						value={this.state.value}
 						onChange={this.handleChange}
 						id="settings-textArea"
