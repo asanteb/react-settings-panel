@@ -30,7 +30,7 @@ class TextArea extends Component {
   render() {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
-    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>

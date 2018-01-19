@@ -33,7 +33,7 @@ class SelectionSetting extends Component {
   render() {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
-    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     const Selections = [];
     let defaultVal = this.state.value;
     if (this.props.children.forEach) {

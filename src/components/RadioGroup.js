@@ -23,7 +23,7 @@ class RadioGroup extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const Radios = [];
-    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     if (!this.props.store.settingsData[this.props.name]) {
       this.props.store.settingsData[this.props.name] = {};
     }
