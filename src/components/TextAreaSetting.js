@@ -33,7 +33,7 @@ class TextArea extends Component {
     const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : null;
     return (
       <div>
-        <dl className="uk-description-list uk-description-list-divider">
+        <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
           <dt>{this.props.title}</dt>
           <textarea
             type='text'
