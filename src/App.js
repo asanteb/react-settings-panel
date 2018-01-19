@@ -32,7 +32,7 @@ class Settings extends Component {
   }
 
   render() {
-    
+
     const styles = this.state.styles
     return (
 			<div >
