@@ -21,19 +21,19 @@ class Settings extends Component {
     this.state = {}
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   handleChange = (change) => {
     //console.log(change)
-  }
+  };
 
   handleSubmit = (data) => {
     console.log(data)
-  }
+  };
 
   render() {
-    
-    const styles = this.state.styles
+
+    const styles = this.state.styles;
     return (
 			<div >
         <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
@@ -53,7 +53,7 @@ class Settings extends Component {
             <Switch title="Switch One" name='1' />
             <Switch title="Switch Three" name='2' />
             <TextArea title="TextArea" name='3' />
-            <RadioGroup title="Radio" name='radioo' >
+            <RadioGroup title="Radio" name='radio' >
               <Radio value='A' />
               <Radio value='B' />
               <Radio value='C' />
@@ -74,7 +74,7 @@ class Settings extends Component {
           </CheckboxGroup>
         </Group>
         </SettingsPanel>
-			</div>
+      </div>
     )
   }
 }
