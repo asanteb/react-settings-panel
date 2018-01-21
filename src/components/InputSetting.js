@@ -23,16 +23,19 @@ class InputSetting extends Component {
   }
 
   onBlur = () => {
-    console.log(this.state.value)
     if (this.props.hasOwnProperty("onBlur")) {
       this.props.onBlur(this.state.value);
     }
   };
 
   handleChange = (e) => {
-    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.props.store.settingsData[this.props.name] = e.target.value;
-    this.setState({ value: e.target.value });
+    if (this.props.store) this.props.store.settingsData[this.props.name] = e.target.value;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ value: e.target.value }, () => {
+      if (this.props.hasOwnProperty("onChange") && !this.props.store) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
@@ -62,8 +65,8 @@ class InputSetting extends Component {
 }
 
 InputSetting.defaultProps = {
-	title: null,
-	description: null
+  title: null,
+  description: null
 };
 
 

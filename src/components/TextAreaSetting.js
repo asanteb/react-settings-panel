@@ -22,9 +22,13 @@ class TextArea extends Component {
 
 
   handleChange = (e) => {
-    if (this.props.onChange) this.props.onChange(e.target.value);
-    this.props.store.settingsData[this.props.name] = e.target.value;
-    this.setState({ value: e.target.value });
+    if (this.props.store) this.props.store.settingsData[this.props.name] = e.target.value;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ value: e.target.value }, () => {
+      if (this.props.hasOwnProperty("onChange") && !this.props.store) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
@@ -36,7 +40,7 @@ class TextArea extends Component {
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
-          <dt>{this.props.title}</dt>
+          <dt>{title}</dt>
           <textarea
             type='text'
             className={`uk-textarea ${width}`}
