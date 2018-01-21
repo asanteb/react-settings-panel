@@ -32,7 +32,7 @@ class Settings extends Component {
   }
 
   render() {
-    
+
     const styles = this.state.styles
     return (
 			<div >
@@ -42,7 +42,7 @@ class Settings extends Component {
             <Switch title="Switch One" name={'a'} />
             <Switch title="Switch Two" name={'b'} />
             <Switch title="Switch Three" name={'c'} />
-            <Input title="Input One" name={'d'} />
+            <Input title="Input One" name={'d'} width={'uk-width-1-3'}/>
             <Selection title="Selection " name={'e'} >
               <Option value='a' />
               <Option value='b' />
