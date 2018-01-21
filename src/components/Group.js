@@ -33,7 +33,7 @@ class Group extends Component {
       Children.push(child);
     }
     return (
-      <div className='uk-card uk-card-default uk-card-body'>
+      <div className='uk-card uk-card-default uk-card-body uk-width-1-1'>
         {Children.length ? Children.map(Child => Child) : null}
       </div>
     );
