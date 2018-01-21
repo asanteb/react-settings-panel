@@ -29,8 +29,6 @@ class CheckboxSetting extends Component {
 	}
 
 	render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
 		const Checkboxes = []
 
 		if (!this.props.store.settingsData[this.props.name]){
@@ -58,13 +56,18 @@ class CheckboxSetting extends Component {
 							{Checkboxes.map(box => box)}
 						</div>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 					<hr/>
 				</dl>
 			</div>
 		)
 	}
+}
+
+CheckboxSetting.defaultProps = {
+		title: null,
+		description: null
 }
 
 CheckboxSetting.propTypes = {

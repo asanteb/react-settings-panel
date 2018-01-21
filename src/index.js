@@ -2,6 +2,7 @@ import SettingsPanel from './components/Layout'
 import Group from './components/Group'
 import Switch from './components/SwitchOption'
 import Input from './components/InputSetting'
+import InputNumber from './components/InputNumber'
 import TextArea from './components/TextAreaSetting'
 import Checkbox from './components/Checkbox'
 import CheckboxGroup from './components/CheckboxGroup'
@@ -23,5 +24,6 @@ module.exports = {
   Option,
   Selection,
   Input,
+  InputNumber,
   TextArea
 }

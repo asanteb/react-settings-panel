@@ -17,8 +17,8 @@ class Radio extends Component {
 		}
 	}
 	
-	componentDidMount () {
-
+	componentWillMount() {
+		this.props.store.settingsData[this.props.parentName] = this.state.value ;
 	}
 
 	validate = () => {
@@ -32,7 +32,7 @@ class Radio extends Component {
 	}
 
 	render() {
-		const value = this.props.value ? this.props.value : ''
+		
 		return (
 			<label>
 				<input
@@ -44,10 +44,14 @@ class Radio extends Component {
 					onClick={(e) => this.handleChange(e, value)}
 					id="settings-radio"
 				/>
-				<span style={{padding: '0.5em'}}>{value}</span>
+				<span style={{padding: '0.5em'}}>{this.props.value}</span>
 			</label>
 		)
 	}
+}
+
+Radio.defaultProps = {
+		value: ''
 }
 
 Radio.propTypes = {

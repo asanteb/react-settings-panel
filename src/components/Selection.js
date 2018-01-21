@@ -17,8 +17,8 @@ class Selection extends Component {
 		}
 	}
 	
-	componentDidMount () {
-
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = this.state.value ;
 	}
 
 
@@ -29,13 +29,17 @@ class Selection extends Component {
   }
 
   render() {
-		const value = this.props.value ? this.props.value : null
+
     return (
 				<option>
-				{value}
+				{this.props.value}
 			</option>
     )
   }
+}
+
+Selection.defaultProps = {
+    value: null
 }
 
 Selection.propTypes = {

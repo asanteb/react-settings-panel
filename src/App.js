@@ -11,6 +11,7 @@ import {
   Option,
   Selection,
   Input,
+  InputNumber,
   TextArea
 } from './index.js'
 import propTypes from 'prop-types'
@@ -43,6 +44,7 @@ class Settings extends Component {
             <Switch title="Switch Two" name={'b'} />
             <Switch title="Switch Three" name={'c'} />
             <Input title="Input One" name={'d'} />
+            <InputNumber title="Input Number" name={'dd'} />
             <Selection title="Selection " name={'e'} >
               <Option value='a' />
               <Option value='b' />

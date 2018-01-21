@@ -8,14 +8,12 @@ const styles = {
 }
 
 @observer
-class InputSetting extends Component {
-	static displayName = "INPUT_SETTING"
+class InputNumber extends Component {
+	static displayName = "INPUT_NUMBER"
 	constructor() {
-	super()
-	this.state = {
-			checked: false,
-			header: '',
-			value:''
+		super()
+		this.state = {
+				value:0
 		}
 	}
 
@@ -26,8 +24,8 @@ class InputSetting extends Component {
 
   handleChange = (e) => {
 		if (this.props.onChange) this.props.onChange(this.props.store.settingsData)
-		this.props.store.settingsData[this.props.name] = e.target.value
-		this.setState({value: e.target.value})
+		this.props.store.settingsData[this.props.name] = parseFloat(e.target.value)
+		this.setState({value: parseFloat(e.target.value)})
   }
 
   render() {
@@ -37,10 +35,13 @@ class InputSetting extends Component {
 				<dl className="uk-description-list uk-description-list-divider">
 					<dt>{this.props.title}</dt>
 					<input
-						type='text'
+						type='number'
 						className='uk-input'
 						value={this.state.value}
 						onChange={this.handleChange}
+						min={this.props.min}
+						max={this.props.max}
+						step={this.props.step}
 						id="settings-input"
 					/>
 					<dd>
@@ -53,18 +54,25 @@ class InputSetting extends Component {
   }
 }
 
-InputSetting.defaultProps = {
+
+InputNumber.defaultProps = {
+	min: 0,
+	max: 100,
+	step: 1,
 	title: null, 
 	description: null
 };
 
 
-InputSetting.propTypes = {
+InputNumber.propTypes = {
 	onValue: propTypes.func,
-		onSubmit: propTypes.func,
-		title: propTypes.string,
-		description: propTypes.string,
-		name: propTypes.string.isRequired
+	onSubmit: propTypes.func,
+	title: propTypes.string,
+	description: propTypes.string,
+	min: propTypes.number,
+	max: propTypes.number,
+	step: propTypes.number,
+	name: propTypes.string.isRequired
 }
 
-export default InputSetting
+export default InputNumber

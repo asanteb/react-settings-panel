@@ -18,16 +18,12 @@ class RadioGroup extends Component {
 		}
 	}
 	
-	componentDidMount () {}
+	componentWillMount() {
+		this.props.store.settingsData[this.props.name] = {} ;
+	}
 
 	render() {
-		const title = this.props.title ? this.props.title : null
-		const description = this.props.description ? this.props.description : null
 		const Radios = []
-
-		if (!this.props.store.settingsData[this.props.name]){
-			this.props.store.settingsData[this.props.name] = {}
-		}
 
 		if (this.props.children.forEach) {
 			this.props.children.forEach((child, i) => {
@@ -53,13 +49,18 @@ class RadioGroup extends Component {
 							</form>
 						</div>
 					<dd>
-						{description}
+						{this.props.description}
 					</dd>
 					<hr/>
 				</dl>
 			</div>
 		)
 	}
+}
+
+RadioGroup.defaultProps = {
+		title: null,
+		description: null 
 }
 
 RadioGroup.propTypes = {
