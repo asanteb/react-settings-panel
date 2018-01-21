@@ -16,8 +16,8 @@ class InputNumber extends Component {
     };
   }
 
-  componentWillMount() {
-    if (this.props.initialValue) this.setState({ value: this.initialValue });
+  componentDidMount() {
+    if (this.props.initialValue) this.setState({ value: this.props.initialValue });
     this.props.store.settingsData[this.props.name] = this.state.value;
   }
 
@@ -33,14 +33,15 @@ class InputNumber extends Component {
   };
 
   render() {
-
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     return (
       <div>
         <dl className="uk-description-list uk-description-list-divider">
           <dt>{this.props.title}</dt>
           <input
             type='number'
-            className='uk-input'
+            className={`uk-input ${width}`}
             value={this.state.value}
             onChange={this.handleChange}
             min={this.props.min}
@@ -51,7 +52,7 @@ class InputNumber extends Component {
           <dd>
             {this.props.description}
           </dd>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </dl>
       </div>
     );
@@ -64,7 +65,7 @@ InputNumber.defaultProps = {
   max: 100,
   step: 1,
   title: null,
-  description: null
+  description: null,
 };
 
 
@@ -77,7 +78,9 @@ InputNumber.propTypes = {
   max: propTypes.number,
   step: propTypes.number,
   name: propTypes.string.isRequired,
-  initialValue: propTypes.number
+  initialValue: propTypes.number,
+  width: propTypes.string,
+  hr: propTypes.bool,
 };
 
 export default InputNumber;
