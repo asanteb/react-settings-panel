@@ -18,14 +18,14 @@ class SwitchOption extends Component {
   }
 
   componentDidMount() {
-    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ checked: this.initialValue });
+    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ checked: this.props.initialValue });
   }
 
 
   handleChange = (checked) => {
     if (this.props.store) this.props.store.settingsData[this.props.name] = checked;
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.setState({ checked }, () => {
+    this.setState({ checked: checked }, () => {
       if (this.props.hasOwnProperty("onChange") && !this.props.store) {
         this.props.onChange(checked);
       }
