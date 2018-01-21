@@ -23,7 +23,7 @@ class RadioGroup extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const Radios = [];
-
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     if (!this.props.store.settingsData[this.props.name]) {
       this.props.store.settingsData[this.props.name] = {};
     }
@@ -43,8 +43,8 @@ class RadioGroup extends Component {
 
     return (
       <div>
-        <dl className="uk-description-list uk-description-list-divider">
-          <dt>{title}</dt>
+        <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
+          <dt>{this.props.title}</dt>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
 
             <form action="">
@@ -54,16 +54,11 @@ class RadioGroup extends Component {
           <dd>
             {description}
           </dd>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </dl>
       </div>
     );
   }
-}
-
-RadioGroup.defaultProps = {
-		title: null,
-		description: null 
 }
 
 RadioGroup.propTypes = {
@@ -71,7 +66,8 @@ RadioGroup.propTypes = {
   onSubmit: propTypes.func,
   title: propTypes.string,
   description: propTypes.string,
-  name: propTypes.string.isRequired
+  name: propTypes.string.isRequired,
+  hr: propTypes.bool,
 };
 
 export default RadioGroup;

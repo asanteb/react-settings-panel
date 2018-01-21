@@ -18,7 +18,9 @@ class InputSetting extends Component {
     };
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+    // this.initProps()
+  }
 
   onBlur = () => {
     console.log(this.state.value)
@@ -28,35 +30,30 @@ class InputSetting extends Component {
   };
 
   handleChange = (e) => {
-    if (this.props.store) this.props.store.settingsData[this.props.name] = e.target.value;
-    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.setState({ value: e.target.value }, () => {
-      if (this.props.hasOwnProperty("onChange")) {
-        this.props.onChange(e.target.value);
-      }
-    });
+    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.props.store.settingsData[this.props.name] = e.target.value;
+    this.setState({ value: e.target.value });
   };
 
   render() {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
-
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     return (
       <div>
-        <dl className="uk-description-list uk-description-list-divider">
-          <dt>{title}</dt>
+        <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
+          <dt>{this.props.title}</dt>
           <input
             type='text'
             className='uk-input'
             value={this.state.value}
             onChange={this.handleChange}
-            onBlur={this.onBlur}
             id="settings-input"
           />
           <dd>
             {description}
           </dd>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </dl>
       </div>
     );
@@ -74,7 +71,8 @@ InputSetting.propTypes = {
   onSubmit: propTypes.func,
   title: propTypes.string,
   description: propTypes.string,
-  name: propTypes.string.isRequired
+  name: propTypes.string.isRequired,
+  hr: propTypes.bool,
 };
 
 export default InputSetting;

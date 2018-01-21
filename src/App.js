@@ -34,7 +34,7 @@ class Settings extends Component {
 
   render() {
 
-    const styles = this.state.styles;
+    const styles = this.state.styles
     return (
 			<div >
         <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
@@ -45,7 +45,7 @@ class Settings extends Component {
             <Switch title="Switch Three" name={'c'} />
             <Input title="Input One" name={'d'} />
             <InputNumber title="Input Number" name={'dd'} />
-            <Selection title="Selection " name={'e'} >
+            <Selection title="Selection " name={'e'}>
               <Option value='a' />
               <Option value='b' />
               <Option value='c' />

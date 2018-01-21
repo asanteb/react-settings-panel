@@ -17,27 +17,26 @@ class SwitchOption extends Component {
     };
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+
+  }
 
 
   handleChange = (checked) => {
-    if (this.props.store) this.props.store.settingsData[this.props.name] = checked;
-    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.setState({ checked: checked }, () => {
-      if (this.props.hasOwnProperty("onChange")) {
-        this.props.onChange(e.target.value);
-      }
-    });
+    const onChange = this.props.onChange;
+    this.props.store.settingsData[this.props.name] = checked;
+    if (this.props.onChange) onChange(this.props.store.settingsData);
+    this.setState({ checked });
   };
 
   render() {
 
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
-
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
     return (
       <div>
-        <dl className="uk-description-list uk-description-list-divider">
+        <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
           <dt>{title}</dt>
           <Switch
             onChange={this.handleChange}
@@ -48,7 +47,7 @@ class SwitchOption extends Component {
             {description}
           </dd>
         </dl>
-        <hr/>
+        {horizontalDivider ? <hr/> : ''}
       </div>
     );
   }
@@ -58,7 +57,8 @@ SwitchOption.propTypes = {
   onChange: propTypes.func,
   title: propTypes.string,
   description: propTypes.string,
-  name: propTypes.string.isRequired
+  name: propTypes.string.isRequired,
+  hr: propTypes.bool,
 };
 
 export default SwitchOption;
