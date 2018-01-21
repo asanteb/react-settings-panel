@@ -17,14 +17,19 @@ class InputNumber extends Component {
   }
 
   componentWillMount() {
+    if (this.props.initialValue) this.setState({ value: this.initialValue });
     this.props.store.settingsData[this.props.name] = this.state.value;
   }
 
 
   handleChange = (e) => {
-    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
     this.props.store.settingsData[this.props.name] = parseFloat(e.target.value);
-    this.setState({ value: parseFloat(e.target.value) });
+    this.setState({ value: parseFloat(e.target.value) }, () => {
+      if (this.props.hasOwnProperty("onChange") && !this.props.store) {
+        this.props.onChange(parseFloat(e.target.value));
+      }
+    });
   };
 
   render() {
@@ -71,7 +76,8 @@ InputNumber.propTypes = {
   min: propTypes.number,
   max: propTypes.number,
   step: propTypes.number,
-  name: propTypes.string.isRequired
+  name: propTypes.string.isRequired,
+  initialValue: propTypes.number
 };
 
 export default InputNumber;
