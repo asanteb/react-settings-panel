@@ -37,15 +37,15 @@ class Settings extends Component {
     const styles = this.state.styles;
     return (
       <div>
-        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit} groupsInRows={true} width={'uk-width-2-3'}>
+        <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit} groupsInRows={true}>
           <Toolbar store={'sup'}/>
-          <Group>
+          <Group width={'uk-width-2-3'}>
             <Switch title="Switch One" name={'a'}/>
             <Switch title="Switch Two" name={'b'}/>
             <Switch title="Switch Three" name={'c'}/>
             <Input title="Input One" name={'d'} initialValue={'initial Text you can put here'}/>
-            <InputNumber title="Input Number" name={'dd'} initialValue={5} width={'uk-width-1-4'}/>
-            <Selection title="Selection " name={'e'}>
+            <InputNumber title="Input Number" name={'dd'} initialValue={5} width={'uk-width-1-6'}/>
+            <Selection title="Selection " name={'e'} width={'uk-width-1-4'}>
               <Option value='a'/>
               <Option value='b'/>
               <Option value='c'/>
