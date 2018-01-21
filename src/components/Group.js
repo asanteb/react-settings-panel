@@ -17,7 +17,7 @@ class Group extends Component {
   }
 
   render() {
-    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : 'uk-width-1-1';
     let Children = [];
     if (this.props.children.forEach) {
       this.props.children.forEach((c, i) => {

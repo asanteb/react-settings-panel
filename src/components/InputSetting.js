@@ -19,20 +19,23 @@ class InputSetting extends Component {
   }
 
   componentDidMount() {
-    // this.initProps()
+    if (this.props.initialValue) this.setState({ value: this.initialValue });
   }
 
   onBlur = () => {
-    console.log(this.state.value)
     if (this.props.hasOwnProperty("onBlur")) {
       this.props.onBlur(this.state.value);
     }
   };
 
   handleChange = (e) => {
-    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.props.store.settingsData[this.props.name] = e.target.value;
-    this.setState({ value: e.target.value });
+    if (this.props.store) this.props.store.settingsData[this.props.name] = e.target.value;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ value: e.target.value }, () => {
+      if (this.props.hasOwnProperty("onChange") && !this.props.store) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
@@ -62,8 +65,8 @@ class InputSetting extends Component {
 }
 
 InputSetting.defaultProps = {
-	title: null, 
-	description: null
+  title: null,
+  description: null
 };
 
 
@@ -74,7 +77,8 @@ InputSetting.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
-  width: propTypes.string
+  width: propTypes.string,
+  initialValue: propTypes.string
 };
 
 export default InputSetting;
