@@ -13,6 +13,8 @@ import {
 import UIkit from 'uikit';
 import '../assets/css/uikit.min.css';
 import '../assets/css/main.css';
+
+import SubmitButtons from './Submit';
 // UIkit.use(Icons)
 
 const defaultStyles = {
@@ -35,9 +37,9 @@ class Settings extends Component {
 
   loadStyles = () => {
     const styles = { ...this.state.styles };
-    const userStyles = this.props;
-    if (userStyles.color) styles.backgroundColor = userStyles.color;
-    if (userStyles.textColor) styles.textColor = userStyles.textColor;
+    const { color, textColor } = this.props;
+    if (color) styles.backgroundColor = color;
+    if (textColor) styles.textColor = textColor;
     this.setState({ styles: styles });
   };
 
@@ -51,19 +53,19 @@ class Settings extends Component {
   };
 
   render() {
+    const { noButtons } = this.props;
     let Toolbar = null;
     let Groups = [];
     let SingleUnknownProp = null;
-    let Submit = (
-      <p className='uk-margin' style={{ textAlign: 'right', padding: '1.5em' }}>
-        <button onClick={this.clearData} style={{ backgroundColor: 'white' }} className="uk-button uk-button-default">Cancel</button>
-        <button onClick={this.submitData} className="uk-button uk-button-primary">Submit</button>
-      </p>
+    let Submit = null;
+
+    if (noButtons) Submit = null;
+    else Submit = (
+      <SubmitButtons submit={this.submitData} clear={this.clearData} />
     );
 
     if (this.props.children.forEach) {
       this.props.children.forEach(child => {
-        console.log(`type: ${child.type.displayName}`);
         if (child.type.displayName === 'TOOLBAR') {
           Toolbar = React.cloneElement(child, {
             store: this.state.mobX
@@ -104,5 +106,13 @@ class Settings extends Component {
     );
   }
 }
+
+Settings.propTypes = {
+  onSubmit: propTypes.func,
+  color: propTypes.string,
+  textColor: propTypes.string,
+  children: propTypes.node,
+  noButtons: propTypes.bool
+};
 
 export default Settings;
