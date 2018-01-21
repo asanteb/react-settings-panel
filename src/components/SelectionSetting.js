@@ -34,6 +34,7 @@ class SelectionSetting extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
     const Selections = [];
     let defaultVal = this.state.value;
     if (this.props.children.forEach) {
@@ -57,8 +58,9 @@ class SelectionSetting extends Component {
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
           <dt>{this.props.title}</dt>
           <div className="uk-margin">
-            <select className='uk-select'
-                    onChange={(e) => this.handleChange(e, defaultVal)}
+            <select
+              className={`uk-select ${width}`}
+              onChange={(e) => this.handleChange(e, defaultVal)}
             >
               <option value=''>Select an Item</option>
               {Selections.map(box => box)}
@@ -81,6 +83,7 @@ SelectionSetting.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
+  width: propTypes.string
 };
 
 export default SelectionSetting;

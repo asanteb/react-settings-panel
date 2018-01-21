@@ -31,13 +31,15 @@ class TextArea extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
           <dt>{this.props.title}</dt>
           <textarea
             type='text'
-            className='uk-textarea'
+            className={`uk-textarea ${width}`}
             value={this.state.value}
             onChange={this.handleChange}
             id="settings-textArea"
@@ -45,7 +47,7 @@ class TextArea extends Component {
           <dd>
             {description}
           </dd>
-          {horizontalDivider ? <hr/> : ''}
+          <hr/>
         </dl>
       </div>
     );
@@ -59,6 +61,7 @@ TextArea.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
+  width: propTypes.string
 };
 
 export default TextArea;

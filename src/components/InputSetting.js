@@ -39,13 +39,14 @@ class InputSetting extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
           <dt>{this.props.title}</dt>
           <input
             type='text'
-            className='uk-input'
+            className={`uk-input ${width}`}
             value={this.state.value}
             onChange={this.handleChange}
             id="settings-input"
@@ -73,6 +74,7 @@ InputSetting.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
+  width: propTypes.string
 };
 
 export default InputSetting;

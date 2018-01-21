@@ -37,9 +37,9 @@ class Settings extends Component {
 
   loadStyles = () => {
     const styles = { ...this.state.styles };
-    const { color, textColor } = this.props;
-    if (color) styles.backgroundColor = color;
-    if (textColor) styles.textColor = textColor;
+    const userStyles = this.props;
+    if (userStyles.color) styles.backgroundColor = userStyles.color;
+    if (userStyles.textColor) styles.textColor = userStyles.textColor;
     this.setState({ styles: styles });
   };
 
@@ -53,15 +53,15 @@ class Settings extends Component {
   };
 
   render() {
-    const { noButtons } = this.props;
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
     let Toolbar = null;
     let Groups = [];
     let SingleUnknownProp = null;
-    let Submit = null;
-
-    if (noButtons) Submit = null;
-    else Submit = (
-      <SubmitButtons submit={this.submitData} clear={this.clearData} />
+    let Submit = (
+      <p className='uk-margin' style={{ textAlign: 'right', padding: '1.5em' }}>
+        <button onClick={this.clearData} style={{ backgroundColor: 'white' }} className="uk-button uk-button-default">Cancel</button>
+        <button onClick={this.submitData} className="uk-button uk-button-primary">Submit</button>
+      </p>
     );
 
     if (this.props.children.forEach) {
@@ -88,7 +88,7 @@ class Settings extends Component {
     }
     return (
       <Provider store={this.state.mobX}>
-        <div className='settings-layout' style={this.state.styles}>
+        <div className={`settings-layout ${width}`} style={this.state.styles}>
           {Toolbar}
           <Grid fluid className='settings-main-container'>
             <Row style={{ margin: '0 auto' }}>
@@ -112,7 +112,8 @@ Settings.propTypes = {
   color: propTypes.string,
   textColor: propTypes.string,
   children: propTypes.node,
-  noButtons: propTypes.bool
+  noButtons: propTypes.bool,
+  width: propTypes.string
 };
 
 export default Settings;
