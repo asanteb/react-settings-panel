@@ -57,13 +57,16 @@ class Settings extends Component {
     let Groups = [];
     let SingleUnknownProp = null;
     const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
-    const { groupsInRows } = this.props;
-    let Submit = (
+    const { noButtons, groupsInRows } = this.props;
+    let Submit;
+    if (noButtons) Submit = null;
+    else Submit = (
       <p className='uk-margin' style={{ textAlign: 'right', padding: '1.5em' }}>
         <button onClick={this.clearData} style={{ backgroundColor: 'white' }} className="uk-button uk-button-default">Cancel</button>
         <button onClick={this.submitData} className="uk-button uk-button-primary">Submit</button>
       </p>
     );
+
 
     if (this.props.children.forEach) {
       this.props.children.forEach(child => {
@@ -95,14 +98,14 @@ class Settings extends Component {
       </Row>
     );
 
-     if (groupsInRows) {
+    if (groupsInRows) {
       groupLayout = (
         <Col xl>
           {
             Groups.map((Group, i) => <Row key={md5(`group-row-${i}`)} style={{ margin: '8px' }}>{Group}</Row>)
           }
         </Col>
-      )
+      );
     }
 
     return (
@@ -127,7 +130,7 @@ Settings.propTypes = {
   children: propTypes.node,
   noButtons: propTypes.bool,
   width: propTypes.string,
-  groupsInRows: propTypes.bool
+  groupsInRows: propTypes.bool,
 };
 
 export default Settings;
