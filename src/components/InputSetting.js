@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Switch from 'react-switch';
 import propTypes from 'prop-types';
 import { observer } from 'mobx-react';
 
@@ -14,18 +15,26 @@ class InputSetting extends Component {
       checked: false,
       header: '',
       value: ''
+    };
+  }
+
+  componentDidMount() { }
+
+  onBlur = () => {
+    console.log(this.state.value)
+    if (this.props.hasOwnProperty("onBlur")) {
+      this.props.onBlur(this.state.value);
     }
-  }
-
-  componentDidMount() {
-    if (this.props.initialValue) this.setState({ value: this.initialValue });
-  }
-
+  };
 
   handleChange = (e) => {
-    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.props.store.settingsData[this.props.name] = e.target.value;
-    this.setState({ value: e.target.value })
+    if (this.props.store) this.props.store.settingsData[this.props.name] = e.target.value;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ value: e.target.value }, () => {
+      if (this.props.hasOwnProperty("onChange")) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
@@ -41,6 +50,7 @@ class InputSetting extends Component {
             className='uk-input'
             value={this.state.value}
             onChange={this.handleChange}
+            onBlur={this.onBlur}
             id="settings-input"
           />
           <dd>
@@ -49,7 +59,7 @@ class InputSetting extends Component {
           <hr/>
         </dl>
       </div>
-    )
+    );
   }
 }
 
@@ -64,8 +74,7 @@ InputSetting.propTypes = {
   onSubmit: propTypes.func,
   title: propTypes.string,
   description: propTypes.string,
-  name: propTypes.string.isRequired,
-  initialValue: propTypes.string
+  name: propTypes.string.isRequired
 };
 
 export default InputSetting;

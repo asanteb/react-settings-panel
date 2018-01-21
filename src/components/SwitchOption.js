@@ -10,26 +10,28 @@ class SwitchOption extends Component {
   static displayName = "SWITCH_OPTION";
 
   constructor() {
-    super()
+    super();
     this.state = {
       checked: false,
       header: ''
-    }
+    };
   }
 
-  componentDidMount() {
-    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ checked: this.initialValue });
-  }
+  componentDidMount() { }
 
 
   handleChange = (checked) => {
-    const onChange = this.props.onChange;
-    this.props.store.settingsData[this.props.name] = checked;
-    if (this.props.onChange) onChange(this.props.store.settingsData);
-    this.setState({ checked })
+    if (this.props.store) this.props.store.settingsData[this.props.name] = checked;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ checked: checked }, () => {
+      if (this.props.hasOwnProperty("onChange")) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
+
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
 
@@ -48,22 +50,15 @@ class SwitchOption extends Component {
         </dl>
         <hr/>
       </div>
-    )
+    );
   }
 }
-
-SwitchOption.defaultProps = {
-	title: null,
-	description: null
-}
-
 
 SwitchOption.propTypes = {
   onChange: propTypes.func,
   title: propTypes.string,
   description: propTypes.string,
-  name: propTypes.string.isRequired,
-  initialValue: propTypes.bool
+  name: propTypes.string.isRequired
 };
 
-export default SwitchOption
+export default SwitchOption;

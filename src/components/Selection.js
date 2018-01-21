@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Switch from 'react-switch';
 import propTypes from 'prop-types';
 import { observer } from 'mobx-react';
 
@@ -12,16 +13,22 @@ class Selection extends Component {
     super();
     this.state = {
       value: ''
-    }
+    };
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+
+  }
 
 
   handleChange = (e, value) => {
-    this.props.store.settingsData[this.props.parentName] = e.target.value;
-    if (this.props.onChange) this.props.onChange(this.props.store.settingData);
-    this.setState({ value: e.target.value });
+    if (this.props.store) this.props.store.settingsData[this.props.parentName] = e.target.value;
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingData);
+    this.setState({ value: e.target.value }, () => {
+      if (this.props.hasOwnProperty("onChange")) {
+        this.props.onChange(e.target.value);
+      }
+    });
   };
 
   render() {
@@ -30,17 +37,13 @@ class Selection extends Component {
       <option>
         {value}
       </option>
-    )
+    );
   }
 }
 
-Selection.defaultProps = {
-    value: null
-}
-
 Selection.propTypes = {
-  value: propTypes.string.isRequired,
+  value: propTypes.string,
   onChange: propTypes.func,
 };
 
-export default Selection
+export default Selection;

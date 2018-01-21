@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Switch from 'react-switch';
 import propTypes from 'prop-types';
 import { observer } from 'mobx-react';
 
@@ -13,18 +14,21 @@ class Checkbox extends Component {
     super();
     this.state = {
       value: false
-    }
+    };
   }
 
   componentDidMount() {
-    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ value: this.initialValue });
-  }
 
+  }
 
   handleChange = (e, value) => {
     this.props.store.settingsData[this.props.parentName][value] = !this.state.value;
-    if (this.props.onChange) this.props.onChange(this.props.store.settingsData);
-    this.setState({ value: !this.state.value })
+    if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
+    this.setState({ value: !this.state.value }, () => {
+      if (this.props.hasOwnProperty("onChange")) {
+        this.props.onChange(!this.state.value);
+      }
+    });
   };
 
   render() {
@@ -40,18 +44,13 @@ class Checkbox extends Component {
         />
         <span style={{ padding: '0.5em' }}>{value}</span>
       </label>
-    )
+    );
   }
-}
-
-Checkbox.defaultProps = {
-	value: ''
 }
 
 Checkbox.propTypes = {
   value: propTypes.string,
   onChange: propTypes.func,
-  initialValue: propTypes.bool
 };
 
-export default Checkbox
+export default Checkbox;

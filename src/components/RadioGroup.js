@@ -1,61 +1,64 @@
-import React, { Component } from 'react'
-import Switch from 'react-switch'
-import propTypes from 'prop-types'
-import md5 from 'md5'
-import { observer } from 'mobx-react'
+import React, { Component } from 'react';
+import Switch from 'react-switch';
+import propTypes from 'prop-types';
+import md5 from 'md5';
+import { observer } from 'mobx-react';
 
-const styles = {
-
-}
+const styles = {};
 
 @observer
 class RadioGroup extends Component {
-	static displayName = "RADIO_SETTING"
-	constructor() {
-		super()
-		this.state = {
-			value:''
-		}
-	}
-	
-	componentWillMount() {
-		this.props.store.settingsData[this.props.name] = {} ;
-	}
+  static displayName = "RADIO_SETTING";
 
-	render() {
-		const Radios = []
+  constructor() {
+    super();
+    this.state = {
+      value: ''
+    };
+  }
 
-		if (this.props.children.forEach) {
-			this.props.children.forEach((child, i) => {
-				if (child.type.displayName === 'RADIO') {
-					const c = React.cloneElement(child, {
-						store: this.props.store,
-						key: md5(`radio${i}`),
-						parentName: this.props.name
-					})
-					Radios.push(c)
-				}
-			})
-		}
+  componentDidMount() {}
 
-		return (
-			<div>
-				<dl className="uk-description-list uk-description-list-divider">
-					<dt>{this.props.title}</dt>
-						<div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-							
-							<form action="" >
-								{Radios.map(radio => radio)}
-							</form>
-						</div>
-					<dd>
-						{this.props.description}
-					</dd>
-					<hr/>
-				</dl>
-			</div>
-		)
-	}
+  render() {
+    const title = this.props.title ? this.props.title : null;
+    const description = this.props.description ? this.props.description : null;
+    const Radios = [];
+
+    if (!this.props.store.settingsData[this.props.name]) {
+      this.props.store.settingsData[this.props.name] = {};
+    }
+
+    if (this.props.children.forEach) {
+      this.props.children.forEach((child, i) => {
+        if (child.type.displayName === 'RADIO') {
+          const c = React.cloneElement(child, {
+            store: this.props.store,
+            key: md5(`radio${i}`),
+            parentName: this.props.name
+          });
+          Radios.push(c);
+        }
+      });
+    }
+
+    return (
+      <div>
+        <dl className="uk-description-list uk-description-list-divider">
+          <dt>{title}</dt>
+          <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+
+            <form action="">
+              {Radios.map(radio => radio)}
+            </form>
+          </div>
+          <dd>
+            {description}
+          </dd>
+          <hr/>
+        </dl>
+      </div>
+    );
+  }
 }
 
 RadioGroup.defaultProps = {
@@ -64,11 +67,11 @@ RadioGroup.defaultProps = {
 }
 
 RadioGroup.propTypes = {
-		onValue: propTypes.func,
-		onSubmit: propTypes.func,
-		title: propTypes.string,
-		description: propTypes.string,
-		name: propTypes.string.isRequired
-}
+  onValue: propTypes.func,
+  onSubmit: propTypes.func,
+  title: propTypes.string,
+  description: propTypes.string,
+  name: propTypes.string.isRequired
+};
 
-export default RadioGroup
+export default RadioGroup;
