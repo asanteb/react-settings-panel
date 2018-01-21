@@ -53,10 +53,11 @@ class Settings extends Component {
   };
 
   render() {
-    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
     let Toolbar = null;
     let Groups = [];
     let SingleUnknownProp = null;
+    const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : "";
+    const { groupsInRows } = this.props;
     let Submit = (
       <p className='uk-margin' style={{ textAlign: 'right', padding: '1.5em' }}>
         <button onClick={this.clearData} style={{ backgroundColor: 'white' }} className="uk-button uk-button-default">Cancel</button>
@@ -86,18 +87,30 @@ class Settings extends Component {
       });
 
     }
+    let groupLayout = (
+      <Row style={{ margin: '0 auto' }}>
+        {
+          Groups.map((Group, i) => <Col key={md5(`group-col-${i}`)} xs>{Group}</Col>)
+        }
+      </Row>
+    );
+
+     if (groupsInRows) {
+      groupLayout = (
+        <Col xl>
+          {
+            Groups.map((Group, i) => <Row key={md5(`group-row-${i}`)} style={{ margin: '8px' }}>{Group}</Row>)
+          }
+        </Col>
+      )
+    }
+
     return (
       <Provider store={this.state.mobX}>
         <div className={`settings-layout ${width}`} style={this.state.styles}>
           {Toolbar}
           <Grid fluid className='settings-main-container'>
-            <Row style={{ margin: '0 auto' }}>
-              {
-                Groups.map((Group, i) => {
-                  return <Col xs key={md5(`group${i}`)}>{Group}</Col>;
-                })
-              }
-            </Row>
+            {groupLayout}
           </Grid>
           {SingleUnknownProp}
           {Submit}
@@ -113,7 +126,8 @@ Settings.propTypes = {
   textColor: propTypes.string,
   children: propTypes.node,
   noButtons: propTypes.bool,
-  width: propTypes.string
+  width: propTypes.string,
+  groupsInRows: propTypes.bool
 };
 
 export default Settings;

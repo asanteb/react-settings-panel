@@ -27,10 +27,15 @@ class Group extends Component {
         });
         Children.push(child);
       });
+    } else if (this.props.children) {
+      const child = React.cloneElement(this.props.children, {
+        store: this.props.store
+      });
+      Children.push(child);
     }
     return (
       <div className={`uk-card uk-card-default uk-card-body ${width}`}>
-        {Children.map(Child => Child)}
+        {Children.length ? Children.map(Child => Child) : null}
       </div>
     );
   }
@@ -39,6 +44,5 @@ class Group extends Component {
 Group.propTypes = {
   width: propTypes.string
 };
-
 
 export default Group;
