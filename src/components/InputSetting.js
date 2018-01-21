@@ -19,7 +19,7 @@ class InputSetting extends Component {
   }
 
   componentDidMount() {
-    if (this.props.initialValue) this.setState({ value: this.initialValue });
+    if (this.props.initialValue) this.setState({ value: this.props.initialValue });
   }
 
   onBlur = () => {

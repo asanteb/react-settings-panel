@@ -45,7 +45,7 @@ var Settings = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Settings.__proto__ || (0, _getPrototypeOf2.default)(Settings)).call(this));
 
     _this.handleChange = function (change) {
-      //console.log(change)
+      // console.log(change)
     };
 
     _this.handleSubmit = function (data) {
@@ -69,18 +69,19 @@ var Settings = function (_Component) {
         null,
         _react2.default.createElement(
           _index.SettingsPanel,
-          { color: '#728ad8', onSubmit: this.handleSubmit },
+          { color: '#728ad8', onSubmit: this.handleSubmit, groupsInRows: true },
           _react2.default.createElement(_index.Toolbar, { store: 'sup' }),
           _react2.default.createElement(
             _index.Group,
-            null,
+            { width: 'uk-width-2-3' },
             _react2.default.createElement(_index.Switch, { title: 'Switch One', name: 'a' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Two', name: 'b' }),
             _react2.default.createElement(_index.Switch, { title: 'Switch Three', name: 'c' }),
-            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd' }),
+            _react2.default.createElement(_index.Input, { title: 'Input One', name: 'd', initialValue: 'initial Text you can put here' }),
+            _react2.default.createElement(_index.InputNumber, { title: 'Input Number', name: 'dd', initialValue: 5, width: 'uk-width-1-6' }),
             _react2.default.createElement(
               _index.Selection,
-              { title: 'Selection ', name: 'e' },
+              { title: 'Selection ', name: 'e', width: 'uk-width-1-4' },
               _react2.default.createElement(_index.Option, { value: 'a' }),
               _react2.default.createElement(_index.Option, { value: 'b' }),
               _react2.default.createElement(_index.Option, { value: 'c' })
@@ -94,7 +95,7 @@ var Settings = function (_Component) {
             _react2.default.createElement(_index.TextArea, { title: 'TextArea', name: '3' }),
             _react2.default.createElement(
               _index.RadioGroup,
-              { title: 'Radio', name: 'radioo' },
+              { title: 'Radio', name: 'radio' },
               _react2.default.createElement(_index.Radio, { value: 'A' }),
               _react2.default.createElement(_index.Radio, { value: 'B' }),
               _react2.default.createElement(_index.Radio, { value: 'C' })
