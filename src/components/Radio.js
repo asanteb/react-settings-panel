@@ -17,7 +17,7 @@ class Radio extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ value: this.initialValue });
   }
 
   validate = () => {
@@ -59,6 +59,7 @@ class Radio extends Component {
 Radio.propTypes = {
   value: propTypes.string,
   onChange: propTypes.func,
+  initialValue: propTypes.bool
 };
 
 export default Radio;

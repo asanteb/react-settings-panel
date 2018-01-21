@@ -18,11 +18,11 @@ class Checkbox extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ value: this.initialValue });
   }
 
   handleChange = (e, value) => {
-    this.props.store.settingsData[this.props.parentName][value] = !this.state.value;
+    if (this.props.store) this.props.store.settingsData[this.props.parentName][value] = !this.state.value;
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
     this.setState({ value: !this.state.value }, () => {
       if (this.props.hasOwnProperty("onChange")) {
@@ -51,6 +51,7 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
   value: propTypes.string,
   onChange: propTypes.func,
+  initialValue: propTypes.bool
 };
 
 export default Checkbox;

@@ -19,7 +19,7 @@ class InputSetting extends Component {
   }
 
   componentDidMount() {
-    // this.initProps()
+    if (this.props.initialValue) this.setState({ value: this.initialValue });
   }
 
   onBlur = () => {
@@ -62,7 +62,7 @@ class InputSetting extends Component {
 }
 
 InputSetting.defaultProps = {
-	title: null, 
+	title: null,
 	description: null
 };
 
@@ -74,7 +74,8 @@ InputSetting.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
-  width: propTypes.string
+  width: propTypes.string,
+  initialValue: propTypes.string
 };
 
 export default InputSetting;

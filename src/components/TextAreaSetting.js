@@ -17,7 +17,7 @@ class TextArea extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.initialValue) this.setState({ value: this.initialValue });
   }
 
 
@@ -61,7 +61,8 @@ TextArea.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   hr: propTypes.bool,
-  width: propTypes.string
+  width: propTypes.string,
+  initialValue: propTypes.string
 };
 
 export default TextArea;

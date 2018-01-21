@@ -18,7 +18,7 @@ class SwitchOption extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ checked: this.initialValue });
   }
 
 
@@ -76,7 +76,8 @@ SwitchOption.propTypes = {
   title: propTypes.string,
   description: propTypes.string,
   name: propTypes.string.isRequired,
-  titleHorizontal: propTypes.bool
+  titleHorizontal: propTypes.bool,
+  initialValue: propTypes.bool
 };
 
 export default SwitchOption;
