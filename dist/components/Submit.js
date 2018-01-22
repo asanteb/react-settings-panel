@@ -66,18 +66,23 @@ var Submit = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Com
         { className: 'uk-margin', style: { textAlign: 'right', padding: '1.5em' } },
         _react2.default.createElement(
           'button',
-          { style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
-          'Default'
+          { onClick: this.props.clear, style: { backgroundColor: 'white' }, className: 'uk-button uk-button-default' },
+          'Cancel'
         ),
         _react2.default.createElement(
           'button',
-          { className: 'uk-button uk-button-primary' },
-          'Primary'
+          { onClick: this.props.submit, className: 'uk-button uk-button-secondary' },
+          'Submit'
         )
       );
     }
   }]);
   return Submit;
 }(_react.Component), _class2.displayName = "SUBMIT", _temp)) || _class;
+
+Submit.propTypes = {
+  clear: _propTypes2.default.func,
+  submit: _propTypes2.default.func
+};
 
 exports.default = Submit;

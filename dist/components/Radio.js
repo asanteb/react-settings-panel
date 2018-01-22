@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
@@ -45,66 +45,76 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = {};
 
 var Radio = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
-	(0, _inherits3.default)(Radio, _Component);
+  (0, _inherits3.default)(Radio, _Component);
 
-	function Radio() {
-		(0, _classCallCheck3.default)(this, Radio);
+  function Radio() {
+    (0, _classCallCheck3.default)(this, Radio);
 
-		var _this = (0, _possibleConstructorReturn3.default)(this, (Radio.__proto__ || (0, _getPrototypeOf2.default)(Radio)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (Radio.__proto__ || (0, _getPrototypeOf2.default)(Radio)).call(this));
 
-		_this.validate = function () {
-			return _this.props.store[_this.props.parentName][_this.props.value];
-		};
+    _this.validate = function () {
+      return _this.props.store[_this.props.parentName][_this.props.value];
+    };
 
-		_this.handleChange = function (e, value) {
-			_this.props.store.settingsData[_this.props.parentName] = value;
-			if (_this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
-			_this.setState({ value: e.target.value });
-		};
+    _this.handleChange = function (e, value) {
+      if (_this.props.store) {
+        if (!_this.props.store.settingsData) _this.props.store.settingsData = {};
+        _this.props.store.settingsData[_this.props.parentName] = value;
+      }
+      if (_this.props.store && _this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
+      _this.setState({ value: e.target.value }, function () {
+        if (_this.props.hasOwnProperty("onChange") && !_this.props.store) {
+          _this.props.onChange(e.target.value);
+        }
+      });
+    };
 
-		_this.state = {
-			value: ''
-		};
-		return _this;
-	}
+    _this.state = {
+      value: ''
+    };
+    return _this;
+  }
 
-	(0, _createClass3.default)(Radio, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
+  (0, _createClass3.default)(Radio, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ value: this.initialValue });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-			var value = this.props.value ? this.props.value : '';
-			return _react2.default.createElement(
-				'label',
-				null,
-				_react2.default.createElement('input', {
-					name: this.props.parentName,
-					value: this.props.value,
-					type: 'radio',
-					className: 'uk-radio',
-					readOnly: true,
-					onClick: function onClick(e) {
-						return _this2.handleChange(e, value);
-					},
-					id: 'settings-radio'
-				}),
-				_react2.default.createElement(
-					'span',
-					{ style: { padding: '0.5em' } },
-					value
-				)
-			);
-		}
-	}]);
-	return Radio;
+      var value = this.props.value ? this.props.value : '';
+      return _react2.default.createElement(
+        'label',
+        null,
+        _react2.default.createElement('input', {
+          name: this.props.parentName,
+          value: this.props.value,
+          type: 'radio',
+          className: 'uk-radio',
+          readOnly: true,
+          onClick: function onClick(e) {
+            return _this2.handleChange(e, value);
+          },
+          id: 'settings-radio'
+        }),
+        _react2.default.createElement(
+          'span',
+          { style: { padding: '0.5em' } },
+          value
+        )
+      );
+    }
+  }]);
+  return Radio;
 }(_react.Component), _class2.displayName = "RADIO", _temp)) || _class;
 
 Radio.propTypes = {
-	value: _propTypes2.default.string,
-	onChange: _propTypes2.default.func
+  value: _propTypes2.default.string,
+  onChange: _propTypes2.default.func,
+  initialValue: _propTypes2.default.bool
 };
 
 exports.default = Radio;

@@ -16,6 +16,10 @@ var _InputSetting = require('./components/InputSetting');
 
 var _InputSetting2 = _interopRequireDefault(_InputSetting);
 
+var _InputNumber = require('./components/InputNumber');
+
+var _InputNumber2 = _interopRequireDefault(_InputNumber);
+
 var _TextAreaSetting = require('./components/TextAreaSetting');
 
 var _TextAreaSetting2 = _interopRequireDefault(_TextAreaSetting);
@@ -62,5 +66,6 @@ module.exports = {
   Option: _Selection2.default,
   Selection: _SelectionSetting2.default,
   Input: _InputSetting2.default,
+  InputNumber: _InputNumber2.default,
   TextArea: _TextAreaSetting2.default
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
@@ -45,71 +45,106 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = {};
 
 var SwitchOption = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Component) {
-	(0, _inherits3.default)(SwitchOption, _Component);
+  (0, _inherits3.default)(SwitchOption, _Component);
 
-	function SwitchOption() {
-		(0, _classCallCheck3.default)(this, SwitchOption);
+  function SwitchOption() {
+    (0, _classCallCheck3.default)(this, SwitchOption);
 
-		var _this = (0, _possibleConstructorReturn3.default)(this, (SwitchOption.__proto__ || (0, _getPrototypeOf2.default)(SwitchOption)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (SwitchOption.__proto__ || (0, _getPrototypeOf2.default)(SwitchOption)).call(this));
 
-		_this.handleChange = function (checked) {
-			var onChange = _this.props.onChange;
-			_this.props.store.settingsData[_this.props.name] = checked;
-			if (_this.props.onChange) onChange(_this.props.store.settingsData);
-			_this.setState({ checked: checked });
-		};
+    _this.handleChange = function (checked) {
+      if (_this.props.store) _this.props.store.settingsData[_this.props.name] = checked;
+      if (_this.props.store && _this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
+      _this.setState({ checked: checked }, function () {
+        if (_this.props.hasOwnProperty("onChange") && !_this.props.store) {
+          _this.props.onChange(checked);
+        }
+      });
+    };
 
-		_this.state = {
-			checked: false,
-			header: ''
-		};
-		return _this;
-	}
+    _this.state = {
+      checked: false,
+      header: ''
+    };
+    return _this;
+  }
 
-	(0, _createClass3.default)(SwitchOption, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {}
-	}, {
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(SwitchOption, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.initialValue !== null && this.props.initialValue !== undefined) this.setState({ checked: this.initialValue });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
 
-			var title = this.props.title ? this.props.title : null;
-			var description = this.props.description ? this.props.description : null;
+      var title = this.props.title ? this.props.title : null;
+      var description = this.props.description ? this.props.description : null;
+      var titleHorizontal = typeof this.props.titleHorizontal === 'boolean' ? this.props.titleHorizontal : null;
+      if (titleHorizontal) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'dl',
+            { className: 'uk-description-list uk-description-list-divider' },
+            _react2.default.createElement(_reactSwitch2.default, {
+              onChange: this.handleChange,
+              checked: this.state.checked,
+              id: 'switch-option'
+            }),
+            ' ',
+            _react2.default.createElement(
+              'span',
+              { style: { verticalAlign: 'top' } },
+              title
+            ),
+            _react2.default.createElement(
+              'dd',
+              null,
+              description
+            )
+          ),
+          _react2.default.createElement('hr', null)
+        );
+      }
 
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'dl',
-					{ className: 'uk-description-list uk-description-list-divider' },
-					_react2.default.createElement(
-						'dt',
-						null,
-						title
-					),
-					_react2.default.createElement(_reactSwitch2.default, {
-						onChange: this.handleChange,
-						checked: this.state.checked,
-						id: 'switch-option'
-					}),
-					_react2.default.createElement(
-						'dd',
-						null,
-						description
-					)
-				),
-				_react2.default.createElement('hr', null)
-			);
-		}
-	}]);
-	return SwitchOption;
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'dl',
+          { className: 'uk-description-list uk-description-list-divider' },
+          _react2.default.createElement(
+            'dt',
+            null,
+            title
+          ),
+          _react2.default.createElement(_reactSwitch2.default, {
+            onChange: this.handleChange,
+            checked: this.state.checked,
+            id: 'switch-option'
+          }),
+          _react2.default.createElement(
+            'dd',
+            null,
+            description
+          )
+        ),
+        _react2.default.createElement('hr', null)
+      );
+    }
+  }]);
+  return SwitchOption;
 }(_react.Component), _class2.displayName = "SWITCH_OPTION", _temp)) || _class;
 
 SwitchOption.propTypes = {
-	onChange: _propTypes2.default.func,
-	title: _propTypes2.default.string,
-	description: _propTypes2.default.string,
-	name: _propTypes2.default.string.isRequired
+  onChange: _propTypes2.default.func,
+  title: _propTypes2.default.string,
+  description: _propTypes2.default.string,
+  name: _propTypes2.default.string.isRequired,
+  titleHorizontal: _propTypes2.default.bool,
+  initialValue: _propTypes2.default.bool
 };
 
 exports.default = SwitchOption;

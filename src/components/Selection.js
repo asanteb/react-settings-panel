@@ -25,7 +25,7 @@ class Selection extends Component {
     if (this.props.store) this.props.store.settingsData[this.props.parentName] = e.target.value;
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingData);
     this.setState({ value: e.target.value }, () => {
-      if (this.props.hasOwnProperty("onChange")) {
+      if (this.props.hasOwnProperty("onChange") && !this.props.store) {
         this.props.onChange(e.target.value);
       }
     });
