@@ -27,7 +27,7 @@ class InputNumber extends Component {
     this.props.store.settingsData[this.props.name] = parseFloat(e.target.value);
     this.setState({ value: parseFloat(e.target.value) }, () => {
       if (this.props.hasOwnProperty("onChange") && !this.props.store) {
-        this.props.onChange(parseFloat(e.target.value));
+        this.props.onChange({ [this.props.name]: parseFloat(e.target.value) });
       }
     });
   };
