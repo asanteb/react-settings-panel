@@ -51,7 +51,7 @@ class TextArea extends Component {
           <dd>
             {description}
           </dd>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </dl>
       </div>
     );

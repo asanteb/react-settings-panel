@@ -60,7 +60,7 @@ class SelectionSetting extends Component {
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
-          <dt>{this.props.title}</dt>
+          <dt>{title}</dt>
           <div className="uk-margin">
             <select
               className={`uk-select ${width}`}

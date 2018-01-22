@@ -37,6 +37,8 @@ class SwitchOption extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const titleHorizontal = typeof this.props.titleHorizontal === 'boolean' ? this.props.titleHorizontal : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+
     if (titleHorizontal) {
       return (
         <div>
@@ -50,7 +52,7 @@ class SwitchOption extends Component {
               {description}
             </dd>
           </dl>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </div>
       )
     }
@@ -68,7 +70,7 @@ class SwitchOption extends Component {
             {description}
           </dd>
         </dl>
-        <hr/>
+        {horizontalDivider ? <hr/> : ''}
       </div>
     )
   }
@@ -80,7 +82,8 @@ SwitchOption.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   titleHorizontal: propTypes.bool,
-  initialValue: propTypes.bool
+  initialValue: propTypes.bool,
+  hr: propTypes.bool,
 };
 
 export default SwitchOption;

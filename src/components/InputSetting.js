@@ -46,7 +46,7 @@ class InputSetting extends Component {
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
-          <dt>{this.props.title}</dt>
+          <dt>{title}</dt>
           <input
             type='text'
             className={`uk-input ${width}`}

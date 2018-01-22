@@ -58,7 +58,7 @@ class CheckboxSetting extends Component {
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
-          <dt>{this.props.title}</dt>
+          <dt>{title}</dt>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             {Checkboxes.map(box => box)}
           </div>
