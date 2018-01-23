@@ -108,7 +108,7 @@ var TextArea = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
             null,
             description
           ),
-          _react2.default.createElement('hr', null)
+          horizontalDivider ? _react2.default.createElement('hr', null) : ''
         )
       );
     }

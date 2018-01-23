@@ -65,19 +65,22 @@ var Group = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_Comp
 
       var width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : 'uk-width-1-1';
       var Children = [];
-      if (this.props.children.forEach) {
-        this.props.children.forEach(function (c, i) {
-          var child = _react2.default.cloneElement(c, {
-            store: _this2.props.store,
-            key: (0, _md2.default)('group' + i)
+      if (this.props.children) {
+        if (this.props.children.forEach) {
+          this.props.children.forEach(function (c, i) {
+            var child = _react2.default.cloneElement(c, {
+              store: _this2.props.store,
+              key: (0, _md2.default)('group-child-' + i)
+            });
+            Children.push(child);
+          });
+        } else {
+          var child = _react2.default.cloneElement(this.props.children, {
+            store: this.props.store,
+            key: (0, _md2.default)('group-child-' + 0)
           });
           Children.push(child);
-        });
-      } else if (this.props.children) {
-        var child = _react2.default.cloneElement(this.props.children, {
-          store: this.props.store
-        });
-        Children.push(child);
+        }
       }
       return _react2.default.createElement(
         'div',

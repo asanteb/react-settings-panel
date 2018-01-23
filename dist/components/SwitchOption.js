@@ -85,6 +85,8 @@ var SwitchOption = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
       var title = this.props.title ? this.props.title : null;
       var description = this.props.description ? this.props.description : null;
       var titleHorizontal = typeof this.props.titleHorizontal === 'boolean' ? this.props.titleHorizontal : null;
+      var horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+
       if (titleHorizontal) {
         return _react2.default.createElement(
           'div',
@@ -109,7 +111,7 @@ var SwitchOption = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
               description
             )
           ),
-          _react2.default.createElement('hr', null)
+          horizontalDivider ? _react2.default.createElement('hr', null) : ''
         );
       }
 
@@ -135,7 +137,7 @@ var SwitchOption = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
             description
           )
         ),
-        _react2.default.createElement('hr', null)
+        horizontalDivider ? _react2.default.createElement('hr', null) : ''
       );
     }
   }]);
@@ -148,7 +150,8 @@ SwitchOption.propTypes = {
   description: _propTypes2.default.string,
   name: _propTypes2.default.string.isRequired,
   titleHorizontal: _propTypes2.default.bool,
-  initialValue: _propTypes2.default.bool
+  initialValue: _propTypes2.default.bool,
+  hr: _propTypes2.default.bool
 };
 
 exports.default = SwitchOption;

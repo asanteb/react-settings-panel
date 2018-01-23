@@ -61,7 +61,7 @@ var Checkbox = (0, _mobxReact.observer)(_class = (_temp = _class2 = function (_C
       if (_this.props.store && _this.props.onChange) _this.props.onChange(_this.props.store.settingsData);
       _this.setState({ value: !_this.state.value }, function () {
         if (_this.props.hasOwnProperty("onChange") && !_this.props.store) {
-          _this.props.onChange((0, _defineProperty3.default)({}, _this.props.name, !_this.state.value));
+          _this.props.onChange((0, _defineProperty3.default)({}, _this.props.parentName, (0, _defineProperty3.default)({}, value, !_this.state.value)));
         }
       });
     };

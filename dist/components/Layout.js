@@ -142,17 +142,18 @@ var Settings = function (_Component) {
 
       if (this.props.children.forEach) {
         this.props.children.forEach(function (child) {
-          if (child.type.displayName === 'TOOLBAR') {
-            Toolbar = _react2.default.cloneElement(child, {
-              store: _this2.state.mobX
-            });
-          }
-          if (child.type.displayName === 'GROUP') {
-            var g = _react2.default.cloneElement(child, {
-              store: _this2.state.mobX
-            });
-
-            Groups.push(g);
+          if (child && child.type) {
+            if (child.type.displayName === 'TOOLBAR') {
+              Toolbar = _react2.default.cloneElement(child, {
+                store: _this2.state.mobX
+              });
+            }
+            if (child.type.displayName === 'GROUP') {
+              var g = _react2.default.cloneElement(child, {
+                store: _this2.state.mobX
+              });
+              Groups.push(g);
+            }
           }
         });
       } else {

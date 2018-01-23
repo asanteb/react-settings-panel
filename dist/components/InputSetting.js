@@ -101,7 +101,7 @@ var InputSetting = (0, _mobxReact.observer)(_class = (_temp = _class2 = function
           _react2.default.createElement(
             'dt',
             null,
-            this.props.title
+            title
           ),
           _react2.default.createElement('input', {
             type: 'text',
