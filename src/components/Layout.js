@@ -70,17 +70,18 @@ class Settings extends Component {
 
     if (this.props.children.forEach) {
       this.props.children.forEach(child => {
-        if (child.type.displayName === 'TOOLBAR') {
-          Toolbar = React.cloneElement(child, {
-            store: this.state.mobX
-          });
-        }
-        if (child.type.displayName === 'GROUP') {
-          const g = React.cloneElement(child, {
-            store: this.state.mobX
-          });
-
-          Groups.push(g);
+        if (child && child.type) {
+          if (child.type.displayName === 'TOOLBAR') {
+            Toolbar = React.cloneElement(child, {
+              store: this.state.mobX
+            });
+          }
+          if (child.type.displayName === 'GROUP') {
+            const g = React.cloneElement(child, {
+              store: this.state.mobX
+            });
+            Groups.push(g);
+          }
         }
       });
     } else {
