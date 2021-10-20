@@ -13,7 +13,7 @@ React Settings Pannel is a customizable React component that allows you to creat
 
 ### Installation
 
-React-Settings-Panel needs React and Mobx dependensies
+React-Settings-Panel needs React and Mobx dependencies
 
 Install the package and include it to your project
 
@@ -173,7 +173,7 @@ import { SettingsPanel } from 'react-settings-panel'
 
 React-Settings-Panel is open source with a [React-Settings-Panel]
  on GitHub.
- [@yamoshotto] 
+ [@asanteb] 
 
 ### Development
 
@@ -197,7 +197,6 @@ MIT
    [React-Settings-Panel]: <https://github.com/asantebuil/react-settings-panel.git>
    [node.js]: <http://nodejs.org>
    [UIKit]: <https://getuikit.com/>
-   [@yamoshotto]: <http://twitter.com/yamoshotto>
    [webpack]: <https://webpack.js.org/>
    [React]: <https://reactjs.org/>
    [MobX]: <https://mobx.js.org>
