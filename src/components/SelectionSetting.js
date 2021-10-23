@@ -29,7 +29,7 @@ class SelectionSetting extends Component {
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
     this.setState({ value: e.target.value }, () => {
       if (this.props.hasOwnProperty("onChange") && !this.props.store) {
-        this.props.onChange(e.target.value);
+        this.props.onChange({ [this.props.name]: e.target.value });
       }
     });
   };
@@ -60,7 +60,7 @@ class SelectionSetting extends Component {
     return (
       <div>
         <dl className={`uk-description-list ${horizontalDivider ? 'uk-description-list-divider' : ''}`}>
-          <dt>{this.props.title}</dt>
+          <dt>{title}</dt>
           <div className="uk-margin">
             <select
               className={`uk-select ${width}`}

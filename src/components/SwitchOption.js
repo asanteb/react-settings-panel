@@ -27,7 +27,7 @@ class SwitchOption extends Component {
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
     this.setState({ checked: checked }, () => {
       if (this.props.hasOwnProperty("onChange") && !this.props.store) {
-        this.props.onChange(checked);
+        this.props.onChange({ [this.props.name]: checked });
       }
     });
   };
@@ -37,6 +37,8 @@ class SwitchOption extends Component {
     const title = this.props.title ? this.props.title : null;
     const description = this.props.description ? this.props.description : null;
     const titleHorizontal = typeof this.props.titleHorizontal === 'boolean' ? this.props.titleHorizontal : null;
+    const horizontalDivider = typeof this.props.hr === 'boolean' ? this.props.hr : true;
+
     if (titleHorizontal) {
       return (
         <div>
@@ -50,7 +52,7 @@ class SwitchOption extends Component {
               {description}
             </dd>
           </dl>
-          <hr/>
+          {horizontalDivider ? <hr/> : ''}
         </div>
       )
     }
@@ -68,7 +70,7 @@ class SwitchOption extends Component {
             {description}
           </dd>
         </dl>
-        <hr/>
+        {horizontalDivider ? <hr/> : ''}
       </div>
     )
   }
@@ -80,7 +82,8 @@ SwitchOption.propTypes = {
   description: propTypes.string,
   name: propTypes.string.isRequired,
   titleHorizontal: propTypes.bool,
-  initialValue: propTypes.bool
+  initialValue: propTypes.bool,
+  hr: propTypes.bool,
 };
 
 export default SwitchOption;

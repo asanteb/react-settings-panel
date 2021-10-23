@@ -19,19 +19,22 @@ class Group extends Component {
   render() {
     const width = typeof this.props.width === 'string' && this.props.width.includes('uk-width') ? this.props.width : 'uk-width-1-1';
     let Children = [];
-    if (this.props.children.forEach) {
-      this.props.children.forEach((c, i) => {
-        const child = React.cloneElement(c, {
+    if (this.props.children) {
+      if (this.props.children.forEach) {
+        this.props.children.forEach((c, i) => {
+          const child = React.cloneElement(c, {
+            store: this.props.store,
+            key: md5(`group-child-${i}`)
+          });
+          Children.push(child);
+        });
+      } else {
+        const child = React.cloneElement(this.props.children, {
           store: this.props.store,
-          key: md5(`group${i}`)
+          key: md5(`group-child-${0}`)
         });
         Children.push(child);
-      });
-    } else if (this.props.children) {
-      const child = React.cloneElement(this.props.children, {
-        store: this.props.store
-      });
-      Children.push(child);
+      }
     }
     return (
       <div className={`uk-card uk-card-default uk-card-body ${width}`}>

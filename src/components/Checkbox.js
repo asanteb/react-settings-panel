@@ -26,7 +26,7 @@ class Checkbox extends Component {
     if (this.props.store && this.props.onChange) this.props.onChange(this.props.store.settingsData);
     this.setState({ value: !this.state.value }, () => {
       if (this.props.hasOwnProperty("onChange") && !this.props.store) {
-        this.props.onChange(!this.state.value);
+        this.props.onChange({ [this.props.parentName]: { [value]: !this.state.value } });
       }
     });
   };
